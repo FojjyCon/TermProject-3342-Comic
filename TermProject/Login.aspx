@@ -12,11 +12,11 @@
             <h3>Login Page</h3>
         </div>
         <div>
-            <asp:Label ID="lblUsernameLogin" runat="server" Text="Username: "></asp:Label>
-            <asp:TextBox ID="txtUsernameLogin" runat="server"></asp:TextBox>
+            <asp:Label ID="lblUsername" runat="server" Text="Username: "></asp:Label>
+            <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
             <br />
-            <asp:Label ID="lblPasswordLogin" runat="server" Text="Password: "></asp:Label>
-            <asp:TextBox ID="txtPasswordLogin" runat="server"></asp:TextBox>
+            <asp:Label ID="lblPassword" runat="server" Text="Password: "></asp:Label>
+            <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
         </div>
         <div>
             <asp:Button ID="btnSignIn" runat="server" Text="SignIn" OnClick="btnSignIn_Click" />
