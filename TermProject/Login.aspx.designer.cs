@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TermProject
-{
-
-
-    public partial class Login
-    {
-
+namespace TermProject {
+    
+    
+    public partial class Login {
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// lblUsernameLogin control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUsernameLogin;
-
+        
         /// <summary>
         /// txtUsernameLogin control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUsernameLogin;
-
+        
         /// <summary>
         /// lblPasswordLogin control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPasswordLogin;
-
+        
         /// <summary>
         /// txtPasswordLogin control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPasswordLogin;
-
+        
         /// <summary>
         /// btnSignIn control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSignIn;
-
+        
         /// <summary>
         /// btnCreateNewUser control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCreateNewUser;
-
+        
         /// <summary>
         /// btnForgot control.
         /// </summary>
