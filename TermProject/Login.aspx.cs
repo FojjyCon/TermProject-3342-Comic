@@ -53,7 +53,7 @@ namespace TermProject
                             Session["Avatar"] = dbConnect.GetField("Avatar", 0);
                             Session["Money"] = dbConnect.GetField("Money", 0);
                             Session["PhoneNumber"] = dbConnect.GetField("PhoneNumber", 0);
-                            Response.Redirect();
+                            Response.Redirect("ComicUser.aspx");
                         } else
                         {
                             Session["UserId"] = dbConnect.GetField("UserId", 0);
@@ -63,7 +63,7 @@ namespace TermProject
                             Session["Avatar"] = dbConnect.GetField("Avatar", 0);
                             Session["Money"] = dbConnect.GetField("Money", 0);
                             Session["PhoneNumber"] = dbConnect.GetField("PhoneNumber", 0);
-                            Response.Redirect();
+                            Response.Redirect("ComicAdmin.aspx");
                         }
                     }
                 }
