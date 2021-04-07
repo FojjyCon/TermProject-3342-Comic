@@ -21,7 +21,7 @@ namespace TermProject
 
         protected void btnCreateNewUser_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("SignUp.aspx");
         }
 
         protected void btnForgot_Click(object sender, EventArgs e)
