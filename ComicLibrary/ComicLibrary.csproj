@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Comic.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="Tag.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
