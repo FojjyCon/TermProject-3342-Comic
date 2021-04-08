@@ -60,20 +60,31 @@ namespace TermProject
             } else
             {
                 user.Username = username;
+                user.Password = password;
                 user.Avatar = avatar;
-                user.EmailAddress = email;
-                user.SecurityEmail = securityEmail;
                 user.HomeAddress = homeAddress;
                 user.BillingAddress = billingAddress;
                 user.PhoneNumber = phoneNumber;
+                user.EmailAddress = email;
+                user.SecurityEmail = securityEmail;
                 user.Money = money;
                 user.Type = type;
                 user.Question1 = question1;
-                user.Answer1 = answer1;
                 user.Question2 = question2;
-                user.Answer2 = answer2;
                 user.Question3 = question3;
+                user.Answer1 = answer1;
+                user.Answer2 = answer2;
                 user.Answer3 = answer3;
+                int ret = insertData(user.Username, user.Password, user.Avatar, user.HomeAddress, user.BillingAddress, user.PhoneNumber, 
+                    user.EmailAddress, user.SecurityEmail, user.Money, user.Type, user.Question1, user.Question2, user.Question3, user.Answer1, 
+                    user.Answer2, user.Answer3);
+
+                if (ret > 0)
+                {
+                    String owned = "Owned Comics";
+                    String shoppingCart = "Shopping Cart";
+                    String removed = "Removed Comics";
+                }
             }
         }
 
@@ -105,6 +116,90 @@ namespace TermProject
 
             DataSet getEmail = dbConnect.GetDataSetUsingCmdObj(objCommand);
             return getEmail;
+        }
+
+        public int insertData(String username, String password, String avatar, String emailAddress, String securityEmail, String homeAddress, 
+            String billingAddress, String phoneNumber, String money, String type, String question1, String answer1, String question2,
+            String answer2, String question3, String answer3)
+        {
+            objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_signupInsert";
+
+            SqlParameter inputUsername = new SqlParameter("@username", username);
+            inputUsername.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputUsername);
+
+            SqlParameter inputPassword = new SqlParameter("@password", password);
+            inputPassword.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputPassword);
+
+            SqlParameter inputAvatar = new SqlParameter("@avatar", avatar);
+            inputAvatar.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputAvatar);
+
+            SqlParameter inputHomeAddress = new SqlParameter("@homeAddress", homeAddress);
+            inputHomeAddress.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputHomeAddress);
+
+            SqlParameter inputBillingAddress = new SqlParameter("@billingAddress", billingAddress);
+            inputBillingAddress.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputBillingAddress);
+
+            SqlParameter inputPhone = new SqlParameter("@phoneNumber", phoneNumber);
+            inputPhone.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputPhone);
+
+            SqlParameter inputEmail = new SqlParameter("@emailAddress", emailAddress);
+            inputEmail.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputEmail);
+
+            SqlParameter inputSecurityEmail = new SqlParameter("@securityEmail", securityEmail);
+            inputSecurityEmail.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputSecurityEmail);
+
+            SqlParameter inputMoney = new SqlParameter("@money", money);
+            inputMoney.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputMoney);
+
+            SqlParameter inputType = new SqlParameter("@type", type);
+            inputType.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputType);
+
+            SqlParameter inputQ1 = new SqlParameter("@question1", question1);
+            inputQ1.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputQ1);
+
+            SqlParameter inputQ2 = new SqlParameter("@question2", question2);
+            inputQ2.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputQ2);
+
+            SqlParameter inputQ3 = new SqlParameter("@question3", question3);
+            inputQ3.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputQ3);
+
+            SqlParameter inputA1 = new SqlParameter("@answer1", answer1);
+            inputA1.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputA1);
+
+            SqlParameter inputA2 = new SqlParameter("@answer2", answer2);
+            inputA2.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputA2);
+
+            SqlParameter inputA3 = new SqlParameter("@answer3", answer3);
+            inputA3.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputA3);
+
+            SqlParameter inputBanStatus = new SqlParameter("@banStatus", 1);
+            inputBanStatus.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputBanStatus);
+
+            SqlParameter inputVerified = new SqlParameter("@verified", 0);
+            inputVerified.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputVerified);
+
+            int ret = dbConnect.DoUpdateUsingCmdObj(objCommand);
+            return ret;
         }
     }
 }
