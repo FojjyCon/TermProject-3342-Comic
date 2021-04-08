@@ -84,6 +84,19 @@ namespace TermProject
                     String owned = "Owned Comics";
                     String shoppingCart = "Shopping Cart";
                     String removed = "Removed Comics";
+
+                    DataSet getEmail = signupGetUserId(user.EmailAddress);
+                    int userId = Int32.Parse(getEmail.Tables[0].Rows[0]["UserId"].ToString());
+
+                    signupCreateTag(owned, userId);
+                    signupCreateTag(shoppingCart, userId);
+                    signupCreateTag(removed, userId);
+
+                    // verification comes into play here (redirect to verification page)
+                    Response.Redirect("Login.aspx");
+                } else
+                {
+                    Response.Write("<script>alert('Did not signup')</script>");
                 }
             }
         }
@@ -108,7 +121,7 @@ namespace TermProject
         {
             objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "signupCheckEmail";
+            objCommand.CommandText = "TP_signupCheckEmail";
 
             SqlParameter inputEmailAddress = new SqlParameter("@emailAddress", email);
             inputEmailAddress.Direction = ParameterDirection.Input;
@@ -201,5 +214,36 @@ namespace TermProject
             int ret = dbConnect.DoUpdateUsingCmdObj(objCommand);
             return ret;
         }
+
+        public void signupCreateTag(String tagName, int userId)
+        {
+            objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_signupCreateTag";
+
+            SqlParameter inputTagNameInbox = new SqlParameter("@tagName", tagName);
+            inputTagNameInbox.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputTagNameInbox);
+
+            SqlParameter inputUserIdInbox = new SqlParameter("@userId", userId);
+            inputUserIdInbox.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputUserIdInbox);
+            dbConnect.DoUpdateUsingCmdObj(objCommand);
+        }
+
+        public DataSet signupGetUserId(String email)
+        {
+            objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_signupGetUserId";
+
+            SqlParameter inputEmailAddress = new SqlParameter("@emailAddress", email);
+            inputEmailAddress.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputEmailAddress);
+
+            DataSet getEmail = dbConnect.GetDataSetUsingCmdObj(objCommand);
+            return getEmail;
+        }
     }
+
 }
