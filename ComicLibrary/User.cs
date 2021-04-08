@@ -16,9 +16,9 @@ namespace ComicLibrary
         private String avatar;
         private String emailAddress;
         private String securityEmail;
-        private int banStatus;
+        private String banStatus;
         private String type;
-        private int money;
+        private String money;
         private String question1;
         private String answer1;
         private String question2;
@@ -34,9 +34,9 @@ namespace ComicLibrary
         public String Avatar { get { return avatar; } set { avatar = value; } }
         public String EmailAddress { get { return emailAddress; } set { emailAddress = value; } }
         public String SecurityEmail { get { return securityEmail; } set { securityEmail = value; } }
-        public int BanStatus { get { return banStatus; } set { banStatus = value; } }
+        public String BanStatus { get { return banStatus; } set { banStatus = value; } }
         public String Type { get { return type; } set { type = value; } }
-        public int Money { get { return money; } set { money = value; } }
+        public String Money { get { return money; } set { money = value; } }
         public String Question1 { get { return question1; } set { question1 = value; } }
         public String Answer1 { get { return answer1; } set { answer1 = value; } }
         public String Question2 { get { return question2; } set { question2 = value; } }

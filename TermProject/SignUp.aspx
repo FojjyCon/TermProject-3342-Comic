@@ -6,8 +6,8 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
-    <form id="form1" runat="server" style="text-align:center">
+<body style="text-align:center">
+    <form id="form1" runat="server">
         <div class="header">
             <h3>Sign Up Page</h3>
         </div>
@@ -34,20 +34,47 @@
             <br />
             <asp:Label ID="lblPhoneNumber" runat="server" Text="Phone Number:"></asp:Label>
             <asp:TextBox ID="txtPhoneNumber" runat="server"></asp:TextBox>
+            <asp:Label ID="lblMoney" runat="server" Text="$$ amount to start with:"></asp:Label>
+            <asp:TextBox ID="txtMoney" runat="server"></asp:TextBox>
         </div>
         <br />
         <div>
             <asp:Label ID="lblQuestion1" runat="server" Text="Security Question 1: "></asp:Label>
-            <asp:DropDownList ID="ddlQuestion1" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddlQuestion1" runat="server">
+                <asp:ListItem Value="q10">What is the name of your first pet?</asp:ListItem>
+                <asp:ListItem Value="q11">Where did you go to elementary school?</asp:ListItem>
+                <asp:ListItem Value="q12">Where were you born?</asp:ListItem>
+                <asp:ListItem Value="q13">What is your mothers middle name?</asp:ListItem>
+                <asp:ListItem Value="q14">What is your fathers middle name?</asp:ListItem>
+            </asp:DropDownList>
             <asp:TextBox ID="txtAnswer1" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="lblQuestion2" runat="server" Text="Security Question 2: "></asp:Label>
-            <asp:DropDownList ID="ddlQuestion2" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddlQuestion2" runat="server">
+                <asp:ListItem Value="q20">What is the name of your first pet?</asp:ListItem>
+                <asp:ListItem Value="q21">Where did you go to elementary school?</asp:ListItem>
+                <asp:ListItem Value="q22">Where were you born?</asp:ListItem>
+                <asp:ListItem Value="q23">What is your mothers middle name?</asp:ListItem>
+                <asp:ListItem Value="q24">What is your fathers middle name?</asp:ListItem>
+            </asp:DropDownList>
             <asp:TextBox ID="txtAnswer2" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="lblQuestion3" runat="server" Text="Security Question 3: "></asp:Label>
-            <asp:DropDownList ID="ddlQuestion3" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddlQuestion3" runat="server">
+                <asp:ListItem Value="q30">What is the name of your first pet?</asp:ListItem>
+                <asp:ListItem Value="q31">Where did you go to elementary school?</asp:ListItem>
+                <asp:ListItem Value="q32">Where were you born?</asp:ListItem>
+                <asp:ListItem Value="q33">What is your mothers middle name?</asp:ListItem>
+                <asp:ListItem Value="q34">What is your fathers middle name?</asp:ListItem>
+            </asp:DropDownList>
             <asp:TextBox ID="txtAnswer3" runat="server"></asp:TextBox>
+        </div>
+        <br />
+        <div>
+            <asp:RadioButtonList ID="rbUserAdmin" runat="server">
+                <asp:ListItem>User</asp:ListItem>
+                <asp:ListItem>Admin</asp:ListItem>
+            </asp:RadioButtonList>
         </div>
         <br />
         <div>

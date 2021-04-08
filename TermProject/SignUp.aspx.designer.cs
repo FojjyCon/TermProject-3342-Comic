@@ -186,6 +186,24 @@ namespace TermProject
         protected global::System.Web.UI.WebControls.TextBox txtPhoneNumber;
 
         /// <summary>
+        /// lblMoney control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMoney;
+
+        /// <summary>
+        /// txtMoney control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMoney;
+
+        /// <summary>
         /// lblQuestion1 control.
         /// </summary>
         /// <remarks>
@@ -265,6 +283,15 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAnswer3;
+
+        /// <summary>
+        /// rbUserAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbUserAdmin;
 
         /// <summary>
         /// btnCreate control.
