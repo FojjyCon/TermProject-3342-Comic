@@ -44,11 +44,8 @@ namespace TermProject
             String money = txtMoney.Text;
             String type = rbUserAdmin.SelectedValue.ToString();
 
-            String question1 = ddlQuestion1.SelectedValue.ToString();
             String answer1 = txtAnswer1.Text;
-            String question2 = ddlQuestion2.SelectedValue.ToString();
             String answer2 = txtAnswer2.Text;
-            String question3 = ddlQuestion3.SelectedValue.ToString();
             String answer3 = txtAnswer3.Text;
 
             if (password != confirmPassword)
@@ -69,15 +66,11 @@ namespace TermProject
                 user.SecurityEmail = securityEmail;
                 user.Money = money;
                 user.Type = type;
-                user.Question1 = question1;
-                user.Question2 = question2;
-                user.Question3 = question3;
                 user.Answer1 = answer1;
                 user.Answer2 = answer2;
                 user.Answer3 = answer3;
                 int ret = insertData(user.Username, user.Password, user.Avatar, user.HomeAddress, user.BillingAddress, user.PhoneNumber, 
-                    user.EmailAddress, user.SecurityEmail, user.Money, user.Type, user.Question1, user.Question2, user.Question3, user.Answer1, 
-                    user.Answer2, user.Answer3);
+                    user.EmailAddress, user.SecurityEmail, user.Money, user.Type, user.Answer1, user.Answer2, user.Answer3);
 
                 if (ret > 0)
                 {
@@ -132,8 +125,7 @@ namespace TermProject
         }
 
         public int insertData(String username, String password, String avatar, String emailAddress, String securityEmail, String homeAddress, 
-            String billingAddress, String phoneNumber, String money, String type, String question1, String answer1, String question2,
-            String answer2, String question3, String answer3)
+            String billingAddress, String phoneNumber, String money, String type, String answer1, String answer2, String answer3)
         {
             objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
@@ -178,18 +170,6 @@ namespace TermProject
             SqlParameter inputType = new SqlParameter("@type", type);
             inputType.Direction = ParameterDirection.Input;
             objCommand.Parameters.Add(inputType);
-
-            SqlParameter inputQ1 = new SqlParameter("@question1", question1);
-            inputQ1.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputQ1);
-
-            SqlParameter inputQ2 = new SqlParameter("@question2", question2);
-            inputQ2.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputQ2);
-
-            SqlParameter inputQ3 = new SqlParameter("@question3", question3);
-            inputQ3.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputQ3);
 
             SqlParameter inputA1 = new SqlParameter("@answer1", answer1);
             inputA1.Direction = ParameterDirection.Input;

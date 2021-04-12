@@ -67,11 +67,52 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ComicAdmin.aspx" />
+    <Content Include="ComicUserCart.aspx" />
+    <Content Include="ComicUserHome.aspx" />
+    <Content Include="ComicUserList.aspx" />
+    <Content Include="ComicUserPersonal.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="SignUp.aspx" />
+    <Content Include="TwoStep.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComicAdmin.aspx.cs">
+      <DependentUpon>ComicAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComicAdmin.aspx.designer.cs">
+      <DependentUpon>ComicAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComicUserCart.aspx.cs">
+      <DependentUpon>ComicUserCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComicUserCart.aspx.designer.cs">
+      <DependentUpon>ComicUserCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComicUserHome.aspx.cs">
+      <DependentUpon>ComicUserHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComicUserHome.aspx.designer.cs">
+      <DependentUpon>ComicUserHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComicUserList.aspx.cs">
+      <DependentUpon>ComicUserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComicUserList.aspx.designer.cs">
+      <DependentUpon>ComicUserList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComicUserPersonal.aspx.cs">
+      <DependentUpon>ComicUserPersonal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComicUserPersonal.aspx.designer.cs">
+      <DependentUpon>ComicUserPersonal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -86,6 +127,13 @@
     </Compile>
     <Compile Include="SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TwoStep.aspx.cs">
+      <DependentUpon>TwoStep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TwoStep.aspx.designer.cs">
+      <DependentUpon>TwoStep.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
