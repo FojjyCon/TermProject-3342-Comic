@@ -13,7 +13,7 @@
     <form id="form1" runat="server">
         <div id="page-content-wrapper">
             <%-- Header --%>
-            <nav class="navbar navbar-expand-lg navbar-light bg-primary border-botton">
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark border-botton">
                 <a class="navbar-brand text-light" href="#">Comic Book Service</a>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav">
@@ -37,12 +37,6 @@
                                 <asp:Button ID="btnPersonal" runat="server" Text="Personal" class="form-control mr-sm-2" OnClick="btnPersonal_Click" />
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <div class="form-inline">
-                                <asp:TextBox ID="txtSearchComic" runat="server" class="form-control mr-sm-2" placeholder="Search Comic" aria-label="Search Comic"></asp:TextBox>
-                                <asp:Button ID="btnSearchComic" runat="server" Text="Search" class="btn btn-outline-light my-2 my-sm-0" OnClick="btnSearchComic_Click" />
-                            </div>
-                        </li>
                     </ul>
                     <div class="form-inline mt-2 mt-md-0">
                         &nbsp
@@ -57,36 +51,7 @@
                 </div>
                 <%-- Displays comic books --%>
                 <asp:Label ID="lblEmpty" runat="server" Text="Comic book is missing"></asp:Label>
-                <asp:GridView ID="gvComicView" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CssClass="table table-hover" BorderStyle="None" ShowHeader="false" OnSelectedIndexChanged="gvComicView_SelectedIndexChanged">
-                    <Columns>
-                        <asp:TemplateField HeaderText="Select">
-                            <ItemTemplate>
-                                <asp:CheckBox ID="chkSelectEmail" runat="server" AutoPostBack="true" CssClass="gridStyle" PagerStyle-CssClass="gridPager" HeaderStyle-CssClass="gridHeader" OnCheckedChanged="chkSelectEmail_CheckedChanged" />
-                            </ItemTemplate>
-                            <ItemStyle Width="20px" HorizontalAlign="Center" VerticalAlign="Middle" />
-                        </asp:TemplateField>
-                        <asp:ButtonField Text="View Comic" />
-                        <asp:BoundField DataField="Title" HeaderText="Title">
-                            <ItemStyle Width="200px" VerticalAlign="Middle" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="Creators" HeaderText="Creator">
-                            <ItemStyle Width="200px" VerticalAlign="Middle" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="Description" HeaderText="Description">
-                            <ItemStyle Width="200px" VerticalAlign="Middle" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="RetailPrice" HeaderText="Retail Price">
-                            <ItemStyle Width="200px" VerticalAlign="Middle" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="ResalePrice" HeaderText="Resale Price">
-                            <ItemStyle Width="200px" VerticalAlign="Middle" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="ReleaseDate" HeaderText="Release Date">
-                            <ItemStyle Width="200px" VerticalAlign="Middle" />
-                        </asp:BoundField>
-                    </Columns>
-                    <RowStyle VerticalAlign="Middle" />
-                </asp:GridView>
+                <asp:DataList ID="DataList1" runat="server"></asp:DataList>
             </div>
 
             <%-- displays the comic details --%>

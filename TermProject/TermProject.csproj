@@ -72,6 +72,7 @@
     <Content Include="ComicUserHome.aspx" />
     <Content Include="ComicUserList.aspx" />
     <Content Include="ComicUserPersonal.aspx" />
+    <Content Include="ForgotInfo.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="SignUp.aspx" />
     <Content Include="TwoStep.aspx" />
@@ -112,6 +113,13 @@
     </Compile>
     <Compile Include="ComicUserPersonal.aspx.designer.cs">
       <DependentUpon>ComicUserPersonal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotInfo.aspx.cs">
+      <DependentUpon>ForgotInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotInfo.aspx.designer.cs">
+      <DependentUpon>ForgotInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

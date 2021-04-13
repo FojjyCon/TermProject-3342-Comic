@@ -53,7 +53,7 @@ namespace TermProject
                             Session["Avatar"] = dbConnect.GetField("Avatar", 0);
                             Session["Money"] = dbConnect.GetField("Money", 0);
                             Session["PhoneNumber"] = dbConnect.GetField("PhoneNumber", 0);
-                            Response.Redirect("ComicUser.aspx");
+                            Response.Redirect("ComicUserHome.aspx");
                         } else
                         {
                             Session["UserId"] = dbConnect.GetField("UserId", 0);
@@ -80,7 +80,7 @@ namespace TermProject
 
         protected void btnForgot_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ForgotInfo.aspx");
         }
 
         public DataSet getLoginData(String username, String password)

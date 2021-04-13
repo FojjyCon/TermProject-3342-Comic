@@ -14,7 +14,7 @@
 
         <%-- header --%>
         <header>
-            <div class="navbar navbar-expand-lg navbar-light bg-primary border-botton">
+            <div class="navbar navbar-expand-lg navbar-light bg-dark border-botton">
                 <div class="text-center">
                     <h1 class="navbar-brand text-light">Comic Book Admin Panel</h1>
                 </div>

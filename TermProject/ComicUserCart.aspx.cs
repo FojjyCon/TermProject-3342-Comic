@@ -33,5 +33,26 @@ namespace TermProject
         {
             Response.Redirect("ComicUserPersonal.aspx");
         }
+
+        protected void gvComicView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void chkSelectEmail_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+            Session.Abandon();
+        }
+
+        protected void btnSearchComic_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

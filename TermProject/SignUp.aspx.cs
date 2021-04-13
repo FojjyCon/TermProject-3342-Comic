@@ -74,15 +74,17 @@ namespace TermProject
 
                 if (ret > 0)
                 {
-                    String owned = "Owned Comics";
-                    String shoppingCart = "Shopping Cart";
-                    String removed = "Removed Comics";
+                    String owned = "Owned";
+                    String sold = "Sold";
+                    String cart = "Cart";
+                    String removed = "Removed";
 
                     DataSet getEmail = signupGetUserId(user.EmailAddress);
                     int userId = Int32.Parse(getEmail.Tables[0].Rows[0]["UserId"].ToString());
 
                     signupCreateTag(owned, userId);
-                    signupCreateTag(shoppingCart, userId);
+                    signupCreateTag(sold, userId);
+                    signupCreateTag(cart, userId);
                     signupCreateTag(removed, userId);
 
                     // verification comes into play here (redirect to verification page)

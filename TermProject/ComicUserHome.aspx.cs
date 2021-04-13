@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TermProject
 {
-    public partial class ComicUser : System.Web.UI.Page
+    public partial class ComicUserHome : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,7 +46,8 @@ namespace TermProject
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Login.aspx");
+            Session.Abandon();
         }
 
         protected void gvComicView_SelectedIndexChanged(object sender, EventArgs e)

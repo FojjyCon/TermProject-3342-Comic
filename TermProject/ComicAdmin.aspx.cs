@@ -31,7 +31,8 @@ namespace TermProject
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Login.aspx");
+            Session.Abandon();
         }
 
         protected void gvComicBooks_SelectedIndexChanged(object sender, EventArgs e)
