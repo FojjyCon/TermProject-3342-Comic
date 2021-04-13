@@ -14,24 +14,24 @@ namespace TermProject
 
         }
 
-        protected void LBOwned_Click(object sender, EventArgs e)
+        protected void btnNavHome_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ComicUserHome.aspx");
         }
 
-        protected void LBSeller_Click(object sender, EventArgs e)
+        protected void btnNavComics_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ComicUserList.aspx");
         }
 
-        protected void LBBuyer_Click(object sender, EventArgs e)
+        protected void btnShoppingCart_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ComicUserCart.aspx");
         }
 
-        protected void LBShoppingCart_Click(object sender, EventArgs e)
+        protected void btnPersonal_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ComicUserPersonal.aspx");
         }
 
         protected void LBDelete_Click(object sender, EventArgs e)
@@ -60,34 +60,14 @@ namespace TermProject
 
         }
 
-        protected void btnBack_Click(object sender, EventArgs e)
+        protected void LBSeller_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void btnAddComic_Click(object sender, EventArgs e)
+        protected void LBOwned_Click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnNavHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ComicUserHome.aspx");
-        }
-
-        protected void btnNavComics_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ComicUserList.aspx");
-        }
-
-        protected void btnShoppingCart_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ComicUserCart.aspx");
-        }
-
-        protected void btnPersonal_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ComicUserPersonal.aspx");
         }
     }
 }

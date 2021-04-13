@@ -6,9 +6,22 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="text-align:center">
     <form id="form1" runat="server">
+        <div class="header">
+            <h2>Verification Page</h2>
+            <h4>Input your username and password below then click the 'Verify' button to verify your account.</h4>
+        </div>
+        <br />
         <div>
+            <asp:Label ID="lblUsername" runat="server" Text="Username: "></asp:Label>
+            <asp:TextBox ID="txtUsernameInput" runat="server"></asp:TextBox>
+            <asp:Label ID="lblPassword" runat="server" Text="Password: "></asp:Label>
+            <asp:TextBox ID="txtPasswordInput" runat="server"></asp:TextBox>
+        </div>
+        <br />
+        <div>
+            <asp:Button ID="btnVerify" runat="server" Text="Verify" OnClick="btnVerify_Click" />
         </div>
     </form>
 </body>

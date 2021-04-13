@@ -11,16 +11,31 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <!-- sidebar -->
         <div class="d-flex" id="wrapper">
+            <div class="bg-dark border-right" id="sidebar-wrapper">
+                <div class="sidebar-heading text-center">
+                    <asp:Image ID="ComicUserAvater" runat="server" ImageUrl="" Width="85" Height="85" CssClass="rounded" />
+                    <br />
+                    <asp:Label ID="lblComicUserName" runat="server" Text="Username" CssClass="text-light"></asp:Label>
+                </div>
+                <div class="list-group list-group-flush text-center">
+                    <asp:LinkButton ID="lbOwned" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBOwned_Click">Owned Comics</asp:LinkButton>
+                    <asp:LinkButton ID="lbSold" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBSeller_Click">Sold Comics</asp:LinkButton>
+                    <asp:LinkButton ID="lbDelete" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBDelete_Click">Removed Comics</asp:LinkButton>
+                </div>
+            </div>
+        
+
             <div id="page-content-wrapper">
                 <%-- Header --%>
-                <nav class="navbar navbar-expand-lg navbar-light bg-dark border-botton">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-botton">
                     <a class="navbar-brand text-light" href="#">Comic Book Service</a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <div class="form-inline">
-                                    <asp:Button ID="btnNavHome" runat="server" Text="Home" class="form-control mr-sm-2"/>
+                                    <asp:Button ID="btnNavHome" runat="server" Text="Home" class="form-control mr-sm-2" OnClick="btnNavHome_Click"/>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -35,7 +50,8 @@
                             </li>
                             <li class="nav-item">
                                 <div class="form-inline">
-                                    <asp:Button ID="btnPersonal" runat="server" Text="Personal" class="form-control mr-sm-2" OnClick="btnPersonal_Click" />
+                                    <asp:TextBox ID="txtSearchComic" runat="server" class="form-control mr-sm-2" placeholder="Search Comic" aria-label="Search Comic"></asp:TextBox>
+                                    <asp:Button ID="btnSearchComic" runat="server" Text="Search" class="btn btn-outline-light my-2 my-sm-0" OnClick="btnSearchComic_Click" />
                                 </div>
                             </li>
                         </ul>
@@ -52,55 +68,8 @@
                     </div>
                     <%-- Displays comic books --%>
                     <asp:Label ID="lblEmpty" runat="server" Text="Comic book is missing"></asp:Label>
-                    <asp:GridView ID="gvComicView" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CssClass="table table-hover" BorderStyle="None" ShowHeader="false" OnSelectedIndexChanged="gvComicView_SelectedIndexChanged">
-                        <Columns>
-                            <asp:TemplateField HeaderText="Select">
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="chkSelectEmail" runat="server" AutoPostBack="true" CssClass="gridStyle" PagerStyle-CssClass="gridPager" HeaderStyle-CssClass="gridHeader" OnCheckedChanged="chkSelectEmail_CheckedChanged" />
-                                </ItemTemplate>
-                                <ItemStyle Width="20px" HorizontalAlign="Center" VerticalAlign="Middle" />
-                            </asp:TemplateField>
-                            <asp:ButtonField Text="View Comic" />
-                            <asp:BoundField DataField="Title" HeaderText="Title">
-                                <ItemStyle Width="200px" VerticalAlign="Middle" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Creators" HeaderText="Creator">
-                                <ItemStyle Width="200px" VerticalAlign="Middle" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Description" HeaderText="Description">
-                                <ItemStyle Width="200px" VerticalAlign="Middle" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="RetailPrice" HeaderText="Retail Price">
-                                <ItemStyle Width="200px" VerticalAlign="Middle" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ResalePrice" HeaderText="Resale Price">
-                                <ItemStyle Width="200px" VerticalAlign="Middle" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ReleaseDate" HeaderText="Release Date">
-                                <ItemStyle Width="200px" VerticalAlign="Middle" />
-                            </asp:BoundField>
-                        </Columns>
-                        <RowStyle VerticalAlign="Middle" />
-                    </asp:GridView>
-                </div>
-
-                <%-- Comic info/add portion --%>
-                <div class="container-fluid">
-                    <asp:Label ID="lblComicTitle" runat="server" Text="Comic Title"></asp:Label>
-                    <br />
-                    <asp:Label ID="lblTitle" runat="server" Text="Comic Title: " CssClass="mr-sm-2" Font-Bold="True"></asp:Label>
-                    <br />
-                    <asp:Label ID="lblCreator" runat="server" Text="Comic Creator(s): " CssClass="mr-sm-2" Font-Bold="True"></asp:Label>
-                    <br />
-                    <asp:Label ID="lblRetailprice" runat="server" Text="Comic Retail Price: " CssClass="mr-sm-2" Font-Bold="True"></asp:Label>
-                    <br />
-                    <asp:Label ID="lblResalePrice" runat="server" Text="Comic Resale Price: " CssClass="mr-sm-2" Font-Bold="True"></asp:Label>
-                    <br />
-                    <asp:Label ID="lblReleaseDate" runat="server" Text="Comic Release Date: " CssClass="mr-sm-2" Font-Bold="True"></asp:Label>
-                    <br />
-                    <asp:Label ID="lblDescription" runat="server" Text="Comic Description: " CssClass="mr-sm-2" Font-Bold="True"></asp:Label>
-                    <br />
-                    <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" OnClick="btnBack_Click" />
+                    <asp:ListView ID="ListView1" runat="server" DataSourceID="dsPersonalComics"></asp:ListView>
+                    <asp:SqlDataSource ID="dsPersonalComics" runat="server"></asp:SqlDataSource>
                 </div>
 
                 <%-- displays the comic details --%>

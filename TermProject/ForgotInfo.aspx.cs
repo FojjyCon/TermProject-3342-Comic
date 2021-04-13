@@ -13,5 +13,15 @@ namespace TermProject
         {
 
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
+
+        protected void btnSend_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

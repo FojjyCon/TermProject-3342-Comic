@@ -30,6 +30,7 @@ namespace TermProject
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             User user = new User();
+            Email objEmail = new Email();
 
             String password = txtPassword.Text;
             String confirmPassword = txtConfirmPassword.Text;
@@ -56,6 +57,11 @@ namespace TermProject
                 Response.Write("<script>alert('This email already exists in the system')</script>");
             } else
             {
+                String strTO = txtEmail.Text;
+                String strFROM = "do_not_reply@comic.com";
+                String strSubject = "Comic Account Verification";
+                String strMessage = "Click the link below to verify your account: http://cis-iis2.temple.edu/spring2021/CIS3342_tuh16611/TermProject/TwoStep.aspx";
+
                 user.Username = username;
                 user.Password = password;
                 user.Avatar = avatar;
@@ -88,10 +94,19 @@ namespace TermProject
                     signupCreateTag(removed, userId);
 
                     // verification comes into play here (redirect to verification page)
-                    Response.Redirect("Login.aspx");
+                    try
+                    {
+                        objEmail.SendMail(strTO, strFROM, strSubject, strMessage);
+                        Response.Write("<script>alert('We sent you an email so you can verify your account. Go do that to be able to login.')</script>");
+                        Response.Redirect("Login.aspx");
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write("<script>alert('The email wasn't sent because one of the required fields was missing.')</script>");
+                    }
                 } else
                 {
-                    Response.Write("<script>alert('Did not signup')</script>");
+                    Response.Write("<script>alert('Did not signup. As said already, some required fields are missing.')</script>");
                 }
             }
         }

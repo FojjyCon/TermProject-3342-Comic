@@ -32,11 +32,6 @@
                                 <asp:Button ID="btnShoppingCart" runat="server" Text="Shopping Cart" class="form-control mr-sm-2" OnClick="btnShoppingCart_Click" />
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <div class="form-inline">
-                                <asp:Button ID="btnPersonal" runat="server" Text="Personal" class="form-control mr-sm-2" OnClick="btnPersonal_Click" />
-                            </div>
-                        </li>
                     </ul>
                     <div class="form-inline mt-2 mt-md-0">
                         &nbsp

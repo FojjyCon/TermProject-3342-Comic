@@ -69,9 +69,8 @@
   <ItemGroup>
     <Content Include="ComicAdmin.aspx" />
     <Content Include="ComicUserCart.aspx" />
-    <Content Include="ComicUserHome.aspx" />
     <Content Include="ComicUserList.aspx" />
-    <Content Include="ComicUserPersonal.aspx" />
+    <Content Include="ComicUserHome.aspx" />
     <Content Include="ForgotInfo.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="SignUp.aspx" />
@@ -93,13 +92,6 @@
     <Compile Include="ComicUserCart.aspx.designer.cs">
       <DependentUpon>ComicUserCart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ComicUserHome.aspx.cs">
-      <DependentUpon>ComicUserHome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ComicUserHome.aspx.designer.cs">
-      <DependentUpon>ComicUserHome.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ComicUserList.aspx.cs">
       <DependentUpon>ComicUserList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -107,12 +99,12 @@
     <Compile Include="ComicUserList.aspx.designer.cs">
       <DependentUpon>ComicUserList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ComicUserPersonal.aspx.cs">
-      <DependentUpon>ComicUserPersonal.aspx</DependentUpon>
+    <Compile Include="ComicUserHome.aspx.cs">
+      <DependentUpon>ComicUserHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ComicUserPersonal.aspx.designer.cs">
-      <DependentUpon>ComicUserPersonal.aspx</DependentUpon>
+    <Compile Include="ComicUserHome.aspx.designer.cs">
+      <DependentUpon>ComicUserHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="ForgotInfo.aspx.cs">
       <DependentUpon>ForgotInfo.aspx</DependentUpon>

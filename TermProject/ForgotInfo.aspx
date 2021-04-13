@@ -31,8 +31,8 @@
         </div>
         <br />
         <div>
-            <asp:Button ID="btnBack" runat="server" Text="Back" />
-            <asp:Button ID="btnSend" runat="server" Text="Send/Submit" />
+            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
+            <asp:Button ID="btnSend" runat="server" Text="Send/Submit" OnClick="btnSend_Click" />
         </div>
     </form>
 </body>
