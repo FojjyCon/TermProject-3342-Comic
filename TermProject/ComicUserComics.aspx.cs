@@ -12,12 +12,12 @@ using ComicLibrary;
 
 namespace TermProject
 {
-    public partial class ComicUserList : System.Web.UI.Page
+    public partial class ComicUserComics : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            WebRequest request = WebRequest.Create("http://gateway.marvel.com/v1/public/comics?ts=1&apikey=c0ca0ea7ab4a1a199d4780793365f375&hash=cb662e91267de7d0099312953927ecdd0479a3a2");
+            /*
+            WebRequest request = WebRequest.Create("");
             WebResponse response = request.GetResponse();
 
             // Read the data from the Web Response, which requires working with streams.
@@ -33,7 +33,7 @@ namespace TermProject
 
             lvAllComics.DataSource = comics;
             lvAllComics.DataBind();
-            
+            */
         }
 
         protected void btnNavHome_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace TermProject
 
         protected void btnNavComics_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ComicUserList.aspx");
+            Response.Redirect("ComicUserComics.aspx");
         }
 
         protected void btnShoppingCart_Click(object sender, EventArgs e)
@@ -51,9 +51,9 @@ namespace TermProject
             Response.Redirect("ComicUserCart.aspx");
         }
 
-        protected void btnPersonal_Click(object sender, EventArgs e)
+        protected void btnCollection_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ComicUserPersonal.aspx");
+            Response.Redirect("ComicUserCollection.aspx");
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)

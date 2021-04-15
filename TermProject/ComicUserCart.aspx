@@ -24,6 +24,11 @@
                         </li>
                         <li class="nav-item">
                             <div class="form-inline">
+                                <asp:Button ID="btnCollection" runat="server" Text="Collection" class="form-control mr-sm-2" OnClick="btnCollection_Click" />
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="form-inline">
                                 <asp:Button ID="btnNavComics" runat="server" Text="Comics" class="form-control mr-sm-2" OnClick="btnNavComics_Click" />
                             </div>
                         </li>

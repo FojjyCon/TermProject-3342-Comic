@@ -21,7 +21,7 @@ namespace TermProject
 
         protected void btnNavComics_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ComicUserList.aspx");
+            Response.Redirect("ComicUserComics.aspx");
         }
 
         protected void btnShoppingCart_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace TermProject
 
         protected void btnPersonal_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ComicUserPersonal.aspx");
+            Response.Redirect("ComicUserCollection.aspx");
         }
 
         protected void LBDelete_Click(object sender, EventArgs e)

@@ -8,25 +8,14 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
         <!-- sidebar -->
         <div class="d-flex" id="wrapper">
-            <div class="bg-dark border-right" id="sidebar-wrapper">
-                <div class="sidebar-heading text-center">
-                    <asp:Image ID="ComicUserAvater" runat="server" ImageUrl="" Width="85" Height="85" CssClass="rounded" />
-                    <br />
-                    <asp:Label ID="lblComicUserName" runat="server" Text="Username" CssClass="text-light"></asp:Label>
-                </div>
-                <div class="list-group list-group-flush text-center">
-                    <asp:LinkButton ID="lbOwned" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBOwned_Click">Owned Comics</asp:LinkButton>
-                    <asp:LinkButton ID="lbSold" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBSeller_Click">Sold Comics</asp:LinkButton>
-                    <asp:LinkButton ID="lbDelete" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBDelete_Click">Removed Comics</asp:LinkButton>
-                </div>
-            </div>
-        
-
             <div id="page-content-wrapper">
                 <%-- Header --%>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-botton">
@@ -36,6 +25,11 @@
                             <li class="nav-item">
                                 <div class="form-inline">
                                     <asp:Button ID="btnNavHome" runat="server" Text="Home" class="form-control mr-sm-2" OnClick="btnNavHome_Click"/>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="form-inline">
+                                    <asp:Button ID="btnCollection" runat="server" Text="Collection" class="form-control mr-sm-2" OnClick="btnPersonal_Click"/>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -72,11 +66,23 @@
                     <asp:SqlDataSource ID="dsPersonalComics" runat="server"></asp:SqlDataSource>
                 </div>
 
-                <%-- displays the comic details --%>
+               <%-- displays the comic details --%>
                 <div class="container-fluid">
+                    <h1 class="text-center">What's Hot</h1>
+                    <p class="lead text-center" id="message"></p>
+                    <div id="marvel-container">
+                        <%-- stores our Comics here via ajax in js file --%>
+                    </div>
                 </div>
+
+                <footer class="footer">
+                    <div class="container">
+                        <p class="text-muted" id="footer"></p>
+                    </div>
+                </footer>
             </div>
         </div>
+        <script src="js/Marvel.js"></script>
     </form>
 </body>
 </html>

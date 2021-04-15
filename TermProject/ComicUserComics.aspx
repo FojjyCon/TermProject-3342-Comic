@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ComicUserList.aspx.cs" Inherits="TermProject.ComicUserList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ComicUserComics.aspx.cs" Inherits="TermProject.ComicUserComics" %>
 
 <!DOCTYPE html>
 
@@ -37,6 +37,11 @@
                             </li>
                             <li class="nav-item">
                                 <div class="form-inline">
+                                    <asp:Button ID="btnCollection" runat="server" Text="Collection" class="form-control mr-sm-2" OnClick="btnCollection_Click" />
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="form-inline">
                                     <asp:Button ID="btnNavComics" runat="server" Text="Comics" class="form-control mr-sm-2" OnClick="btnNavComics_Click" />
                                 </div>
                             </li>
@@ -65,7 +70,10 @@
                     <asp:Label ID="lblEmpty" runat="server" Text="Comics"></asp:Label>
                     <asp:ListView ID="lvAllComics" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3">
                         <AlternatingItemTemplate>
-                            <td runat="server" style="">Title:
+                            <td runat="server" style="">CoverUrl:
+                                <asp:Label ID="CoverUrlLabel" runat="server" Text='<%# Eval("CoverUrl") %>' />
+                                <br />
+                                Title:
                                 <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
                                 <br />
                                 Creators:
@@ -74,19 +82,16 @@
                                 Description:
                                 <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
                                 <br />
-                                RetailPrice:
-                                <asp:Label ID="RetailPriceLabel" runat="server" Text='<%# Eval("RetailPrice") %>' />
-                                <br />
-                                ReleaseDate:
-                                <asp:Label ID="ReleaseDateLabel" runat="server" Text='<%# Eval("ReleaseDate") %>' />
-                                <br />
-                                Cover:
-                                <asp:Label ID="CoverLabel" runat="server" Text='<%# Eval("Cover") %>' />
+                                ResalePrice:
+                                <asp:Label ID="ResalePriceLabel" runat="server" Text='<%# Eval("ResalePrice") %>' />
                                 <br />
                             </td>
                         </AlternatingItemTemplate>
                         <EditItemTemplate>
-                            <td runat="server" style="">Title:
+                            <td runat="server" style="">CoverUrl:
+                                <asp:TextBox ID="CoverUrlTextBox" runat="server" Text='<%# Bind("CoverUrl") %>' />
+                                <br />
+                                Title:
                                 <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
                                 <br />
                                 Creators:
@@ -95,14 +100,8 @@
                                 Description:
                                 <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
                                 <br />
-                                RetailPrice:
-                                <asp:TextBox ID="RetailPriceTextBox" runat="server" Text='<%# Bind("RetailPrice") %>' />
-                                <br />
-                                ReleaseDate:
-                                <asp:TextBox ID="ReleaseDateTextBox" runat="server" Text='<%# Bind("ReleaseDate") %>' />
-                                <br />
-                                Cover:
-                                <asp:TextBox ID="CoverTextBox" runat="server" Text='<%# Bind("Cover") %>' />
+                                ResalePrice:
+                                <asp:TextBox ID="ResalePriceTextBox" runat="server" Text='<%# Bind("ResalePrice") %>' />
                                 <br />
                                 <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
                                 <br />
@@ -126,7 +125,10 @@
                             </tr>
                         </GroupTemplate>
                         <InsertItemTemplate>
-                            <td runat="server" style="">Title:
+                            <td runat="server" style="">CoverUrl:
+                                <asp:TextBox ID="CoverUrlTextBox" runat="server" Text='<%# Bind("CoverUrl") %>' />
+                                <br />
+                                Title:
                                 <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
                                 <br />
                                 Creators:
@@ -135,14 +137,8 @@
                                 Description:
                                 <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
                                 <br />
-                                RetailPrice:
-                                <asp:TextBox ID="RetailPriceTextBox" runat="server" Text='<%# Bind("RetailPrice") %>' />
-                                <br />
-                                ReleaseDate:
-                                <asp:TextBox ID="ReleaseDateTextBox" runat="server" Text='<%# Bind("ReleaseDate") %>' />
-                                <br />
-                                Cover:
-                                <asp:TextBox ID="CoverTextBox" runat="server" Text='<%# Bind("Cover") %>' />
+                                ResalePrice:
+                                <asp:TextBox ID="ResalePriceTextBox" runat="server" Text='<%# Bind("ResalePrice") %>' />
                                 <br />
                                 <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
                                 <br />
@@ -151,7 +147,10 @@
                             </td>
                         </InsertItemTemplate>
                         <ItemTemplate>
-                            <td runat="server" style="">Title:
+                            <td runat="server" style="">CoverUrl:
+                                <asp:Label ID="CoverUrlLabel" runat="server" Text='<%# Eval("CoverUrl") %>' />
+                                <br />
+                                Title:
                                 <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
                                 <br />
                                 Creators:
@@ -160,14 +159,8 @@
                                 Description:
                                 <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
                                 <br />
-                                RetailPrice:
-                                <asp:Label ID="RetailPriceLabel" runat="server" Text='<%# Eval("RetailPrice") %>' />
-                                <br />
-                                ReleaseDate:
-                                <asp:Label ID="ReleaseDateLabel" runat="server" Text='<%# Eval("ReleaseDate") %>' />
-                                <br />
-                                Cover:
-                                <asp:Label ID="CoverLabel" runat="server" Text='<%# Eval("Cover") %>' />
+                                ResalePrice:
+                                <asp:Label ID="ResalePriceLabel" runat="server" Text='<%# Eval("ResalePrice") %>' />
                                 <br />
                             </td>
                         </ItemTemplate>
@@ -187,7 +180,10 @@
                             </table>
                         </LayoutTemplate>
                         <SelectedItemTemplate>
-                            <td runat="server" style="">Title:
+                            <td runat="server" style="">CoverUrl:
+                                <asp:Label ID="CoverUrlLabel" runat="server" Text='<%# Eval("CoverUrl") %>' />
+                                <br />
+                                Title:
                                 <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
                                 <br />
                                 Creators:
@@ -196,19 +192,13 @@
                                 Description:
                                 <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
                                 <br />
-                                RetailPrice:
-                                <asp:Label ID="RetailPriceLabel" runat="server" Text='<%# Eval("RetailPrice") %>' />
-                                <br />
-                                ReleaseDate:
-                                <asp:Label ID="ReleaseDateLabel" runat="server" Text='<%# Eval("ReleaseDate") %>' />
-                                <br />
-                                Cover:
-                                <asp:Label ID="CoverLabel" runat="server" Text='<%# Eval("Cover") %>' />
+                                ResalePrice:
+                                <asp:Label ID="ResalePriceLabel" runat="server" Text='<%# Eval("ResalePrice") %>' />
                                 <br />
                             </td>
                         </SelectedItemTemplate>
                     </asp:ListView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sp21_3342_tuh16611ConnectionString %>" SelectCommand="SELECT [Title], [Creators], [Description], [RetailPrice], [ReleaseDate], [Cover] FROM [TP_Comics] ORDER BY [Title]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sp21_3342_tuh16611ConnectionString %>" SelectCommand="SELECT [CoverUrl], [Title], [Creators], [Description], [ResalePrice] FROM [TP_Comics] ORDER BY [Title]"></asp:SqlDataSource>
                 </div>
 
                 <%-- displays the comic details --%>

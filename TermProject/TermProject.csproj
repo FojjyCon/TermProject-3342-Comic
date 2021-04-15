@@ -69,10 +69,16 @@
   <ItemGroup>
     <Content Include="ComicAdmin.aspx" />
     <Content Include="ComicUserCart.aspx" />
-    <Content Include="ComicUserList.aspx" />
+    <Content Include="ComicUserComics.aspx" />
     <Content Include="ComicUserHome.aspx" />
+    <Content Include="css\topNavbar.css" />
+    <Content Include="css\stickyFooter.css" />
+    <Content Include="css\myStyle.css" />
     <Content Include="ForgotInfo.aspx" />
+    <Content Include="js\jquery-3.6.0.min.js" />
+    <Content Include="js\Marvel.js" />
     <Content Include="Login.aspx" />
+    <Content Include="ComicUserCollection.aspx" />
     <Content Include="SignUp.aspx" />
     <Content Include="TwoStep.aspx" />
     <Content Include="Web.config" />
@@ -92,12 +98,12 @@
     <Compile Include="ComicUserCart.aspx.designer.cs">
       <DependentUpon>ComicUserCart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ComicUserList.aspx.cs">
-      <DependentUpon>ComicUserList.aspx</DependentUpon>
+    <Compile Include="ComicUserComics.aspx.cs">
+      <DependentUpon>ComicUserComics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ComicUserList.aspx.designer.cs">
-      <DependentUpon>ComicUserList.aspx</DependentUpon>
+    <Compile Include="ComicUserComics.aspx.designer.cs">
+      <DependentUpon>ComicUserComics.aspx</DependentUpon>
     </Compile>
     <Compile Include="ComicUserHome.aspx.cs">
       <DependentUpon>ComicUserHome.aspx</DependentUpon>
@@ -119,6 +125,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComicUserCollection.aspx.cs">
+      <DependentUpon>ComicUserCollection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComicUserCollection.aspx.designer.cs">
+      <DependentUpon>ComicUserCollection.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignUp.aspx.cs">
@@ -151,6 +164,7 @@
       <Name>ComicLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
