@@ -29,60 +29,13 @@ namespace TermProject
                 addComicToolsShow(false);
                 if (Session["UserId"] != null)
                 {
-                    showEmailClient();
+                    lblEmpty.Text = "Welcome to your Comic Book Collection area! This is where you can see all of the comic books you own, " +
+                        "have sold, or have just misplaced/gotten rid of.";
                 }
             }
 
 
             addComicToolsShow(false);
-        }
-
-        public void showEmailClient()
-        {
-            Session["Tag"] = "Owned";
-            String tagName = "Owned";
-            int userId = Int32.Parse(Session["UserId"].ToString());
-
-            // grabbing tag Id
-            DataSet getTag = grabTagId(userId, tagName);
-            String comicTag = getTag.Tables[0].Rows[0]["TagId"].ToString();
-
-            // Username and Avatar Display
-            lblComicUserName.Text = Session["Username"].ToString();
-            imgUserAvatar.ImageUrl = Session["Avatar"].ToString();
-
-            DataSet comicInfo = GrabComicOwnerInfo(userId, comicTag);
-
-            int size = comicInfo.Tables[0].Rows.Count;
-            if (size > 0)
-            {
-                var comicList = new List<Comic>();
-                for (int i = 0; i < size; i++)
-                {
-
-                    Comic comic = new Comic();
-                    comic.CoverUrl = comicInfo.Tables[0].Rows[0]["CoverUrl"].ToString();
-                    comic.Title = comicInfo.Tables[0].Rows[i]["Title"].ToString();
-                    comic.Creators = comicInfo.Tables[0].Rows[i]["Creators"].ToString();
-                    comic.Description = comicInfo.Tables[0].Rows[i]["Description"].ToString();
-                    comic.ResalePrice = comicInfo.Tables[0].Rows[i]["ResalePrice"].ToString();
-                    comic.Quantity = comicInfo.Tables[0].Rows[i]["Quantity"].ToString();
-
-                    comicList.Add(comic);
-                }
-
-                lvMyComics.DataSource = comicList;
-                lvMyComics.DataBind();
-                lvMyComics.Visible = true;
-
-            }
-            else
-            {
-                lblEmpty.Text = "Your search content is empty";
-                lblEmpty.Visible = true;
-                lvMyComics.Visible = false;
-            }
-            txtSearchComic.Text = "";
         }
 
         protected void btnCollection_Click(object sender, EventArgs e)
@@ -119,16 +72,155 @@ namespace TermProject
         protected void LBOwned_Click(object sender, EventArgs e)
         {
             addComicToolsShow(false);
+
+            int userId = Int32.Parse(Session["UserId"].ToString());
+
+            // getting all emails
+            DataSet myData = GrabOwnedComics(userId);
+
+            //ArrayList comicList = new ArrayList();
+            var list = new List<Comic>();
+            int size = myData.Tables[0].Rows.Count;
+            for (int i = 0; i < size; i++)
+            {
+                String coverUrl = myData.Tables[0].Rows[i]["CoverUrl"].ToString();
+                String title = myData.Tables[0].Rows[i]["Title"].ToString();
+                String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
+                String description = myData.Tables[0].Rows[i]["Description"].ToString();
+                String resalePrice = myData.Tables[0].Rows[i]["ResalePrice"].ToString();
+                String quantity = myData.Tables[0].Rows[i]["Quantity"].ToString();
+                String ownerId = myData.Tables[0].Rows[i]["OwnerId"].ToString();
+
+                Comic comic = new Comic();
+                comic.CoverUrl = coverUrl;
+                comic.Title = title;
+                comic.Creators = creators;
+                comic.Description = description;
+                comic.ResalePrice = resalePrice;
+                comic.Quantity = quantity;
+                comic.OwnerId = ownerId;
+
+                list.Add(comic);
+            }
+
+            lvMyComics.DataSource = list;
+            lvMyComics.DataBind();
+
+            if (size == 0)
+            {
+                lvMyComics.Visible = false;
+                lblEmpty.Visible = true;
+                lblEmpty.Text = "You do not currently own any comics. Add some to your collection by clicking 'Add' in the top left!";
+            }
+            else
+            {
+                lvMyComics.Visible = true;
+                lblEmpty.Visible = false;
+                lblEmpty.Text = "";
+            }
         }
 
         protected void LBSeller_Click(object sender, EventArgs e)
         {
             addComicToolsShow(false);
+
+            int userId = Int32.Parse(Session["UserId"].ToString());
+
+            // getting all emails
+            DataSet myData = GrabOwnedComics(userId);
+
+            //ArrayList comicList = new ArrayList();
+            var list = new List<Comic>();
+            int size = myData.Tables[0].Rows.Count;
+            for (int i = 0; i < size; i++)
+            {
+                String coverUrl = myData.Tables[0].Rows[i]["CoverUrl"].ToString();
+                String title = myData.Tables[0].Rows[i]["Title"].ToString();
+                String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
+                String description = myData.Tables[0].Rows[i]["Description"].ToString();
+                String resalePrice = myData.Tables[0].Rows[i]["ResalePrice"].ToString();
+                String quantity = myData.Tables[0].Rows[i]["Quantity"].ToString();
+                String ownerId = myData.Tables[0].Rows[i]["OwnerId"].ToString();
+
+                Comic comic = new Comic();
+                comic.CoverUrl = coverUrl;
+                comic.Title = title;
+                comic.Creators = creators;
+                comic.Description = description;
+                comic.ResalePrice = resalePrice;
+                comic.Quantity = quantity;
+                comic.OwnerId = ownerId;
+
+                list.Add(comic);
+            }
+
+            lvMyComics.DataSource = list;
+            lvMyComics.DataBind();
+
+            if (size == 0)
+            {
+                lvMyComics.Visible = false;
+                lblEmpty.Visible = true;
+                lblEmpty.Text = "You do not currently own any comics. Add some to your collection by clicking 'Add' in the top left!";
+            }
+            else
+            {
+                lvMyComics.Visible = true;
+                lblEmpty.Visible = false;
+                lblEmpty.Text = "";
+            }
+
         }
 
         protected void LBDelete_Click(object sender, EventArgs e)
         {
             addComicToolsShow(false);
+
+            int userId = Int32.Parse(Session["UserId"].ToString());
+
+            // getting all emails
+            DataSet myData = GrabOwnedComics(userId);
+
+            //ArrayList comicList = new ArrayList();
+            var list = new List<Comic>();
+            int size = myData.Tables[0].Rows.Count;
+            for (int i = 0; i < size; i++)
+            {
+                String coverUrl = myData.Tables[0].Rows[i]["CoverUrl"].ToString();
+                String title = myData.Tables[0].Rows[i]["Title"].ToString();
+                String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
+                String description = myData.Tables[0].Rows[i]["Description"].ToString();
+                String resalePrice = myData.Tables[0].Rows[i]["ResalePrice"].ToString();
+                String quantity = myData.Tables[0].Rows[i]["Quantity"].ToString();
+                String ownerId = myData.Tables[0].Rows[i]["OwnerId"].ToString();
+
+                Comic comic = new Comic();
+                comic.CoverUrl = coverUrl;
+                comic.Title = title;
+                comic.Creators = creators;
+                comic.Description = description;
+                comic.ResalePrice = resalePrice;
+                comic.Quantity = quantity;
+                comic.OwnerId = ownerId;
+
+                list.Add(comic);
+            }
+
+            lvMyComics.DataSource = list;
+            lvMyComics.DataBind();
+
+            if (size == 0)
+            {
+                lvMyComics.Visible = false;
+                lblEmpty.Visible = true;
+                lblEmpty.Text = "You do not currently own any comics. Add some to your collection by clicking 'Add' in the top left!";
+            }
+            else
+            {
+                lvMyComics.Visible = true;
+                lblEmpty.Visible = false;
+                lblEmpty.Text = "";
+            }
         }
 
         protected void btnAddComic_Click(object sender, EventArgs e)
@@ -168,64 +260,9 @@ namespace TermProject
             // inserting receipt (comic is now owned by this user)
             receiptInsert(ownerId, comicId, tagId);
 
-        }
 
-        /*
-        public void populateTags()
-        {
-            String userId = Session["UserId"].ToString();
-            DataSet myData = grabForPopulateTags(userId);
-
-            ArrayList tags0 = new ArrayList();
-            ArrayList tags = new ArrayList();
-            int size = myData.Tables[0].Rows.Count;
-            if (size > 0)
-            {
-                for (int i = 0; i < size; i++)
-                {
-                    Tag tag0 = new Tag();
-                    Tag tag = new Tag();
-                    String tagName = myData.Tables[0].Rows[i]["TagName"].ToString();
-
-                    if (tagName.CompareTo("Sold") == 0)
-                    {
-                        // do nothing 
-                    }
-                    else
-                    {
-                        tag0.TagName = tagName;
-                        tags0.Add(tag0);
-                    }
-                    if (tagName.CompareTo("Owned") == 0 || tagName.CompareTo("Sold") == 0 ||
-                        tagName.CompareTo("Removed") == 0)
-                    {
-                        // do nothing 
-                    }
-                    else
-                    {
-                        tag.TagName = tagName;
-                        tags.Add(tag);
-                    }
-                }
-            }
 
         }
-        */
-        /*
-        public DataSet grabForPopulateTags(String userId)
-        {
-            objCommand = new SqlCommand();
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_PopulateTags";
-
-            SqlParameter inputUserId = new SqlParameter("@userId", userId);
-            inputUserId.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputUserId);
-
-            DataSet getTagName = dBConnect.GetDataSetUsingCmdObj(objCommand);
-            return getTagName;
-        }
-        */
 
         public void addComicToolsShow(bool tf)
         {
@@ -289,6 +326,20 @@ namespace TermProject
 
             DataSet getGridView = dBConnect.GetDataSetUsingCmdObj(objCommand);
             return getGridView;
+        }
+
+        public DataSet GrabOwnedComics(int userId)
+        {
+            objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GrabOwnedComics";
+
+            SqlParameter inputUserId = new SqlParameter("@userId", userId);
+            inputUserId.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputUserId);
+
+            DataSet myData = dBConnect.GetDataSetUsingCmdObj(objCommand);
+            return myData;
         }
 
         public void createComic(String coverUrl, String title, String creators, String description, float resalePrice, 
