@@ -14,7 +14,7 @@
         <div class="d-flex" id="wrapper">
             <div class="bg-dark border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <asp:Image ID="ComicUserAvater" runat="server" ImageUrl="" Width="85" Height="85" CssClass="rounded" />
+                    <asp:Image ID="imgUserAvatar" runat="server" ImageUrl="" Width="85" Height="85" CssClass="rounded" />
                     <br />
                     <asp:Label ID="lblComicUserName" runat="server" Text="Username" CssClass="text-light"></asp:Label>
                 </div>
@@ -68,137 +68,17 @@
                 <div class="container-fluid">
                     <%-- Displays comic books --%>
                     <asp:Label ID="lblEmpty" runat="server" Text="Comics"></asp:Label>
-                    <asp:ListView ID="lvAllComics" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3">
-                        <AlternatingItemTemplate>
-                            <td runat="server" style="">CoverUrl:
-                                <asp:Label ID="CoverUrlLabel" runat="server" Text='<%# Eval("CoverUrl") %>' />
-                                <br />
-                                Title:
-                                <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
-                                <br />
-                                Creators:
-                                <asp:Label ID="CreatorsLabel" runat="server" Text='<%# Eval("Creators") %>' />
-                                <br />
-                                Description:
-                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
-                                <br />
-                                ResalePrice:
-                                <asp:Label ID="ResalePriceLabel" runat="server" Text='<%# Eval("ResalePrice") %>' />
-                                <br />
-                            </td>
-                        </AlternatingItemTemplate>
-                        <EditItemTemplate>
-                            <td runat="server" style="">CoverUrl:
-                                <asp:TextBox ID="CoverUrlTextBox" runat="server" Text='<%# Bind("CoverUrl") %>' />
-                                <br />
-                                Title:
-                                <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
-                                <br />
-                                Creators:
-                                <asp:TextBox ID="CreatorsTextBox" runat="server" Text='<%# Bind("Creators") %>' />
-                                <br />
-                                Description:
-                                <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
-                                <br />
-                                ResalePrice:
-                                <asp:TextBox ID="ResalePriceTextBox" runat="server" Text='<%# Bind("ResalePrice") %>' />
-                                <br />
-                                <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                                <br />
-                                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-                                <br />
-                            </td>
-                        </EditItemTemplate>
-                        <EmptyDataTemplate>
-                            <table runat="server" style="">
-                                <tr>
-                                    <td>No data was returned.</td>
-                                </tr>
-                            </table>
-                        </EmptyDataTemplate>
-                        <EmptyItemTemplate>
-                            <td runat="server" />
-                        </EmptyItemTemplate>
-                        <GroupTemplate>
-                            <tr id="itemPlaceholderContainer" runat="server">
-                                <td id="itemPlaceholder" runat="server"></td>
-                            </tr>
-                        </GroupTemplate>
-                        <InsertItemTemplate>
-                            <td runat="server" style="">CoverUrl:
-                                <asp:TextBox ID="CoverUrlTextBox" runat="server" Text='<%# Bind("CoverUrl") %>' />
-                                <br />
-                                Title:
-                                <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
-                                <br />
-                                Creators:
-                                <asp:TextBox ID="CreatorsTextBox" runat="server" Text='<%# Bind("Creators") %>' />
-                                <br />
-                                Description:
-                                <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
-                                <br />
-                                ResalePrice:
-                                <asp:TextBox ID="ResalePriceTextBox" runat="server" Text='<%# Bind("ResalePrice") %>' />
-                                <br />
-                                <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                                <br />
-                                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-                                <br />
-                            </td>
-                        </InsertItemTemplate>
-                        <ItemTemplate>
-                            <td runat="server" style="">CoverUrl:
-                                <asp:Label ID="CoverUrlLabel" runat="server" Text='<%# Eval("CoverUrl") %>' />
-                                <br />
-                                Title:
-                                <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
-                                <br />
-                                Creators:
-                                <asp:Label ID="CreatorsLabel" runat="server" Text='<%# Eval("Creators") %>' />
-                                <br />
-                                Description:
-                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
-                                <br />
-                                ResalePrice:
-                                <asp:Label ID="ResalePriceLabel" runat="server" Text='<%# Eval("ResalePrice") %>' />
-                                <br />
-                            </td>
-                        </ItemTemplate>
-                        <LayoutTemplate>
-                            <table runat="server">
-                                <tr runat="server">
-                                    <td runat="server">
-                                        <table id="groupPlaceholderContainer" runat="server" border="0" style="">
-                                            <tr id="groupPlaceholder" runat="server">
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr runat="server">
-                                    <td runat="server" style=""></td>
-                                </tr>
-                            </table>
-                        </LayoutTemplate>
-                        <SelectedItemTemplate>
-                            <td runat="server" style="">CoverUrl:
-                                <asp:Label ID="CoverUrlLabel" runat="server" Text='<%# Eval("CoverUrl") %>' />
-                                <br />
-                                Title:
-                                <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
-                                <br />
-                                Creators:
-                                <asp:Label ID="CreatorsLabel" runat="server" Text='<%# Eval("Creators") %>' />
-                                <br />
-                                Description:
-                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
-                                <br />
-                                ResalePrice:
-                                <asp:Label ID="ResalePriceLabel" runat="server" Text='<%# Eval("ResalePrice") %>' />
-                                <br />
-                            </td>
-                        </SelectedItemTemplate>
-                    </asp:ListView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sp21_3342_tuh16611ConnectionString %>" SelectCommand="SELECT [CoverUrl], [Title], [Creators], [Description], [ResalePrice] FROM [TP_Comics] ORDER BY [Title]"></asp:SqlDataSource>
+                    <br />
+                    <asp:GridView ID="gvComics" runat="server" OnRowCommand="gvComics_RowCommand" OnSelectedIndexChanged="gvComics_SelectedIndexChanged" AutoGenerateColumns="False" GridLines="Horizontal">
+                        <Columns>
+                            <asp:ButtonField Text="Add to Cart" />
+                            <asp:BoundField DataField="Title" HeaderText="Title" />
+                            <asp:BoundField DataField="Creators" HeaderText="Creator(s)" />
+                            <asp:BoundField DataField="Description" HeaderText="Description" />
+                            <asp:BoundField DataField="ResalePrice" HeaderText="Resale Price" DataFormatString="{0:C}" />
+                            <asp:BoundField DataField="OwnerId" HeaderText="OwnerId" />
+                        </Columns>
+                    </asp:GridView>
                 </div>
 
                 <%-- displays the comic details --%>

@@ -34,7 +34,7 @@ namespace TermProject
                 }
             }
 
-
+            lvMyComics.Visible = false;
             addComicToolsShow(false);
         }
 
@@ -71,6 +71,7 @@ namespace TermProject
 
         protected void LBOwned_Click(object sender, EventArgs e)
         {
+            /*
             addComicToolsShow(false);
 
             int userId = Int32.Parse(Session["UserId"].ToString());
@@ -102,10 +103,13 @@ namespace TermProject
 
                 list.Add(comic);
             }
+            */
 
-            lvMyComics.DataSource = list;
-            lvMyComics.DataBind();
+            //lvMyComics.DataSource = list;
+            //lvMyComics.DataBind();
+            lvMyComics.Visible = true;
 
+            /*
             if (size == 0)
             {
                 lvMyComics.Visible = false;
@@ -118,6 +122,7 @@ namespace TermProject
                 lblEmpty.Visible = false;
                 lblEmpty.Text = "";
             }
+            */
         }
 
         protected void LBSeller_Click(object sender, EventArgs e)
@@ -270,6 +275,9 @@ namespace TermProject
             {
                 lblAddTitle.Visible = true;
 
+                lblCoverUrl.Visible = true;
+                txtCoverUrl.Visible = true;
+
                 lblTitle.Visible = true;
                 txtTitle.Visible = true;
 
@@ -290,6 +298,9 @@ namespace TermProject
             } else
             {
                 lblAddTitle.Visible = false;
+
+                lblCoverUrl.Visible = false;
+                txtCoverUrl.Visible = false;
 
                 lblTitle.Visible = false;
                 txtTitle.Visible = false;
@@ -432,6 +443,18 @@ namespace TermProject
 
             DataSet getIt = dBConnect.GetDataSetUsingCmdObj(objCommand);
             return getIt;
+        }
+
+        protected void gvComics_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gvComics_RowCommand(object sender, EventArgs e)
+        {
+
+
+
         }
     }
 }

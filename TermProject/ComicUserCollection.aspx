@@ -76,8 +76,169 @@
                     </div>
                     <%-- Displays comic books --%>
                     <asp:Label ID="lblEmpty" runat="server" Text="Comic book is missing"></asp:Label>
-                    <asp:ListView ID="lvMyComics" runat="server" DataSourceID="dsPersonalComics"></asp:ListView>
-                    <asp:SqlDataSource ID="dsPersonalComics" runat="server"></asp:SqlDataSource>
+                    <asp:ListView ID="lvMyComics" runat="server" DataSourceID="dsPersonalComics" DataKeyNames="ComicId">
+                        <AlternatingItemTemplate>
+                            <td runat="server" style="">ComicId:
+                                <asp:Label ID="ComicIdLabel" runat="server" Text='<%# Eval("ComicId") %>' />
+                                <br />
+                                CoverUrl:
+                                <asp:Label ID="CoverUrlLabel" runat="server" Text='<%# Eval("CoverUrl") %>' />
+                                <br />
+                                Title:
+                                <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
+                                <br />
+                                Creators:
+                                <asp:Label ID="CreatorsLabel" runat="server" Text='<%# Eval("Creators") %>' />
+                                <br />
+                                Description:
+                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
+                                <br />
+                                ResalePrice:
+                                <asp:Label ID="ResalePriceLabel" runat="server" Text='<%# Eval("ResalePrice") %>' />
+                                <br />
+                                Quantity:
+                                <asp:Label ID="QuantityLabel" runat="server" Text='<%# Eval("Quantity") %>' />
+                                <br />
+                                OwnerId:
+                                <asp:Label ID="OwnerIdLabel" runat="server" Text='<%# Eval("OwnerId") %>' />
+                                <br />
+                            </td>
+                        </AlternatingItemTemplate>
+                        <EditItemTemplate>
+                            <td runat="server" style="">ComicId:
+                                <asp:Label ID="ComicIdLabel1" runat="server" Text='<%# Eval("ComicId") %>' />
+                                <br />
+                                CoverUrl:
+                                <asp:TextBox ID="CoverUrlTextBox" runat="server" Text='<%# Bind("CoverUrl") %>' />
+                                <br />
+                                Title:
+                                <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
+                                <br />
+                                Creators:
+                                <asp:TextBox ID="CreatorsTextBox" runat="server" Text='<%# Bind("Creators") %>' />
+                                <br />
+                                Description:
+                                <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
+                                <br />
+                                ResalePrice:
+                                <asp:TextBox ID="ResalePriceTextBox" runat="server" Text='<%# Bind("ResalePrice") %>' />
+                                <br />
+                                Quantity:
+                                <asp:TextBox ID="QuantityTextBox" runat="server" Text='<%# Bind("Quantity") %>' />
+                                <br />
+                                OwnerId:
+                                <asp:TextBox ID="OwnerIdTextBox" runat="server" Text='<%# Bind("OwnerId") %>' />
+                                <br />
+                                <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                            </td>
+                        </EditItemTemplate>
+                        <EmptyDataTemplate>
+                            <table style="">
+                                <tr>
+                                    <td>No data was returned.</td>
+                                </tr>
+                            </table>
+                        </EmptyDataTemplate>
+                        <InsertItemTemplate>
+                            <td runat="server" style="">
+                                CoverUrl:
+                                <asp:TextBox ID="CoverUrlTextBox" runat="server" Text='<%# Bind("CoverUrl") %>' />
+                                <br />
+                                Title:
+                                <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
+                                <br />
+                                Creators:
+                                <asp:TextBox ID="CreatorsTextBox" runat="server" Text='<%# Bind("Creators") %>' />
+                                <br />
+                                Description:
+                                <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
+                                <br />
+                                ResalePrice:
+                                <asp:TextBox ID="ResalePriceTextBox" runat="server" Text='<%# Bind("ResalePrice") %>' />
+                                <br />
+                                Quantity:
+                                <asp:TextBox ID="QuantityTextBox" runat="server" Text='<%# Bind("Quantity") %>' />
+                                <br />
+                                OwnerId:
+                                <asp:TextBox ID="OwnerIdTextBox" runat="server" Text='<%# Bind("OwnerId") %>' />
+                                <br />
+                                <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                            </td>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+
+                            <td runat="server" style="">ComicId:
+                                <asp:Label ID="ComicIdLabel" runat="server" Text='<%# Eval("ComicId") %>' />
+                                <br />
+                                CoverUrl:
+                                <asp:Label ID="CoverUrlLabel" runat="server" Text='<%# Eval("CoverUrl") %>' />
+                                <br />
+                                Title:
+                                <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
+                                <br />
+                                Creators:
+                                <asp:Label ID="CreatorsLabel" runat="server" Text='<%# Eval("Creators") %>' />
+                                <br />
+                                Description:
+                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
+                                <br />
+                                ResalePrice:
+                                <asp:Label ID="ResalePriceLabel" runat="server" Text='<%# Eval("ResalePrice") %>' />
+                                <br />
+                                Quantity:
+                                <asp:Label ID="QuantityLabel" runat="server" Text='<%# Eval("Quantity") %>' />
+                                <br />
+                                OwnerId:
+                                <asp:Label ID="OwnerIdLabel" runat="server" Text='<%# Eval("OwnerId") %>' />
+                                <br />
+                            </td>
+                        </ItemTemplate>
+                        <LayoutTemplate>
+                            <table runat="server" border="0" style="">
+                                <tr runat="server" id="itemPlaceholderContainer">
+                                    <td runat="server" id="itemPlaceholder">
+                                    </td>
+                                </tr>
+                            </table>
+                            <div style="">
+                            </div>
+                        </LayoutTemplate>
+                        <SelectedItemTemplate>
+                            <td runat="server" style="">ComicId:
+                                <asp:Label ID="ComicIdLabel" runat="server" Text='<%# Eval("ComicId") %>' />
+                                <br />
+                                CoverUrl:
+                                <asp:Label ID="CoverUrlLabel" runat="server" Text='<%# Eval("CoverUrl") %>' />
+                                <br />
+                                Title:
+                                <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
+                                <br />
+                                Creators:
+                                <asp:Label ID="CreatorsLabel" runat="server" Text='<%# Eval("Creators") %>' />
+                                <br />
+                                Description:
+                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
+                                <br />
+                                ResalePrice:
+                                <asp:Label ID="ResalePriceLabel" runat="server" Text='<%# Eval("ResalePrice") %>' />
+                                <br />
+                                Quantity:
+                                <asp:Label ID="QuantityLabel" runat="server" Text='<%# Eval("Quantity") %>' />
+                                <br />
+                                OwnerId:
+                                <asp:Label ID="OwnerIdLabel" runat="server" Text='<%# Eval("OwnerId") %>' />
+                                <br />
+                            </td>
+                        </SelectedItemTemplate>
+                    </asp:ListView>
+                    <asp:SqlDataSource ID="dsPersonalComics" runat="server" ConnectionString="<%$ ConnectionStrings:sp21_3342_tuh16611ConnectionString %>" SelectCommand="TP_GrabOwnedComics" SelectCommandType="StoredProcedure">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="" Name="userId" SessionField="UserId" Type="Int32" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <br />
                 </div>
 
                 <div class="container-fluid">
