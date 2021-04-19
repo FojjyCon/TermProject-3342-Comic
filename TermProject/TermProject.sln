@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1340
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermProject", "TermProject\TermProject.csproj", "{461AAB41-8104-4A5F-B4D1-41D43F525258}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicLibrary", "ComicLibrary\ComicLibrary.csproj", "{8E803B3D-A7F0-4FB0-858A-BF85C8E18309}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{461AAB41-8104-4A5F-B4D1-41D43F525258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461AAB41-8104-4A5F-B4D1-41D43F525258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461AAB41-8104-4A5F-B4D1-41D43F525258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461AAB41-8104-4A5F-B4D1-41D43F525258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E803B3D-A7F0-4FB0-858A-BF85C8E18309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E803B3D-A7F0-4FB0-858A-BF85C8E18309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E803B3D-A7F0-4FB0-858A-BF85C8E18309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E803B3D-A7F0-4FB0-858A-BF85C8E18309}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D71B71E-04CE-4FE2-974A-4E4FF802D591}
+	EndGlobalSection
+EndGlobal
