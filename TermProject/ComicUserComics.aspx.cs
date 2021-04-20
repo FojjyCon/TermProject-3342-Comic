@@ -87,9 +87,10 @@ namespace TermProject
             int rowIndex = int.Parse(e.CommandArgument.ToString());
             int cartStatus = 1;
             
-            String title = gvComics.Rows[rowIndex].Cells[5].Text;
-            String ownerId = gvComics.Rows[rowIndex].Cells[1].Text;
-            int stat = setCartStatus(cartStatus.ToString(), title, ownerId);
+            // if (e.CommandName == **Whatever you named it**)
+
+            String comicId = gvComics.Rows[rowIndex].Cells[1].Text;
+            int stat = AddToCart(cartStatus.ToString(), comicId);
             if (stat >= 0)
             {
                 // nothing happens here
@@ -98,6 +99,7 @@ namespace TermProject
                 Response.Write("<script>alert('Cannot add to cart.')</script>");
             }
 
+            Response.Write("<script>alert('Item has been added to your cart.')</script>");
         }
 
         public void displayComics()
@@ -109,6 +111,7 @@ namespace TermProject
             int size = myData.Tables[0].Rows.Count;
             for (int i = 0; i < size; i++)
             {
+                String comicId = myData.Tables[0].Rows[i]["ComicId"].ToString();
                 String title = myData.Tables[0].Rows[i]["Title"].ToString();
                 String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
                 String description = myData.Tables[0].Rows[i]["Description"].ToString();
@@ -116,6 +119,7 @@ namespace TermProject
                 String ownerId = myData.Tables[0].Rows[i]["OwnerId"].ToString();
 
                 Comic comic = new Comic();
+                comic.ComicId = comicId;
                 comic.Title = title;
                 comic.Creators = creators;
                 comic.Description = description;
@@ -152,7 +156,7 @@ namespace TermProject
             return getGridView;
         }
 
-        public int setCartStatus(String cartStatus, String ownerId, String title)
+        public int AddToCart(String cartStatus, String comicId)
         {
             objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
@@ -162,13 +166,10 @@ namespace TermProject
             inputCartStatus.Direction = ParameterDirection.Input;
             objCommand.Parameters.Add(inputCartStatus);
 
-            SqlParameter inputOwnerId = new SqlParameter("@ownerId", ownerId);
-            inputOwnerId.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputOwnerId);
+            SqlParameter inputComicId = new SqlParameter("@comicId", comicId);
+            inputComicId.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputComicId);
 
-            SqlParameter inputTitle = new SqlParameter("@title", title);
-            inputTitle.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputTitle);
             int ret = dBConnect.DoUpdateUsingCmdObj(objCommand);
             return ret;
         }

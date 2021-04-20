@@ -24,6 +24,7 @@ namespace TermProject
             {
                 lblComicUserName.Text = Session["Username"].ToString();
                 imgUserAvatar.ImageUrl = Session["Avatar"].ToString();
+                lblAccountBalance.Text = Session["Money"].ToString();
 
 
                 addComicToolsShow(false);
@@ -265,8 +266,6 @@ namespace TermProject
             // inserting receipt (comic is now owned by this user)
             receiptInsert(ownerId, comicId, tagId);
 
-
-
         }
 
         public void addComicToolsShow(bool tf)
@@ -454,6 +453,11 @@ namespace TermProject
         {
 
 
+
+        }
+
+        protected void btnAddMoney_Click(object sender, EventArgs e)
+        {
 
         }
     }

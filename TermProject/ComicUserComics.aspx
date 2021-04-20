@@ -65,13 +65,14 @@
                     </div>
                 </nav>
                 <%-- Comic Content --%>
-                <div class="container-fluid">
+                <div class="container-fluid" style="text-align:center">
                     <%-- Displays comic books --%>
                     <asp:Label ID="lblEmpty" runat="server" Text="Comics"></asp:Label>
                     <br />
                     <asp:GridView ID="gvComics" runat="server" OnRowCommand="gvComics_RowCommand" OnSelectedIndexChanged="gvComics_SelectedIndexChanged" AutoGenerateColumns="False" GridLines="Horizontal">
                         <Columns>
-                            <asp:ButtonField Text="Add to Cart" />
+                            <asp:ButtonField Text="Add to Cart"/>
+                            <asp:BoundField DataField="ComicId" HeaderText="ComicId" />
                             <asp:BoundField DataField="Title" HeaderText="Title" />
                             <asp:BoundField DataField="Creators" HeaderText="Creator(s)" />
                             <asp:BoundField DataField="Description" HeaderText="Description" />

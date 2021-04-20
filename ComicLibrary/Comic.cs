@@ -9,6 +9,7 @@ namespace ComicLibrary
     public class Comic
     {
         private String coverUrl;
+        private String comicId;
         private String title;
         private String creators;
         private String description;
@@ -17,6 +18,7 @@ namespace ComicLibrary
         private String ownerId;
 
         public String CoverUrl { get { return coverUrl; } set { coverUrl = value; } }
+        public String ComicId { get { return comicId; } set { comicId = value; } }
         public String Title { get { return title; } set { title = value; } }
         public String Creators { get { return creators; } set { creators = value; } }
         public String Description { get { return description; } set { description = value; } }

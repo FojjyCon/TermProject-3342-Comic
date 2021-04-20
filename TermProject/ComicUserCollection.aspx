@@ -18,9 +18,12 @@
                     <asp:Image ID="imgUserAvatar" runat="server" ImageUrl="" Width="85" Height="85" CssClass="rounded" />
                     <br />
                     <asp:Label ID="lblComicUserName" runat="server" Text="Username" CssClass="text-light"></asp:Label>
+                    <br />
+                    <asp:Label ID="lblAccountBalance" runat="server" Text="Balance" CssClass="text-light"></asp:Label>
                 </div>
                 <div class="sidebar-heading text-center">
                     <asp:Button ID="btnAddComic" runat="server" Text="Add+" OnClick="btnAddComic_Click" />
+                    <asp:Button ID="btnAddMoney" runat="server" Text="Add Funds" OnClick="btnAddMoney_Click" />
                 </div>
                 <div class="list-group list-group-flush text-center">
                     <asp:LinkButton ID="lbOwned" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBOwned_Click">Owned Comics</asp:LinkButton>
@@ -168,7 +171,6 @@
                             </td>
                         </InsertItemTemplate>
                         <ItemTemplate>
-
                             <td runat="server" style="">ComicId:
                                 <asp:Label ID="ComicIdLabel" runat="server" Text='<%# Eval("ComicId") %>' />
                                 <br />
