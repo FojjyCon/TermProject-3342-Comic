@@ -20,11 +20,13 @@ namespace TermProject
     {
         DBConnect dBConnect = new DBConnect();
         SqlCommand objCommand = new SqlCommand();
+        SearchSVC.Search proxy = new SearchSVC.Search();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                proxy = new SearchSVC.Search();
                 lblComicUserName.Text = Session["Username"].ToString();
                 imgUserAvatar.ImageUrl = Session["Avatar"].ToString();
 
@@ -65,7 +67,20 @@ namespace TermProject
 
         protected void btnSearchComic_Click(object sender, EventArgs e)
         {
+            String searchContent = txtSearchComic.Text;
 
+            // getting the arrayList
+            ArrayList comics = new ArrayList(proxy.SearchForComic(searchContent));
+
+            gvComics.DataSource = comics;
+            gvComics.DataBind();
+
+            txtSearchComic.Text = "";
+
+            if (comics.Count == 0)
+            {
+                Response.Write("<script>alert('There were no comics that relate to the information provided.')</script>");
+            }
         }
 
         protected void LBOwned_Click(object sender, EventArgs e)

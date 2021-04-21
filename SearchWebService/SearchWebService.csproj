@@ -7,16 +7,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A69B9E2D-802E-4DAA-A908-0FCBB5559FA8}</ProjectGuid>
+    <ProjectGuid>{27F92C8E-88AE-44B5-B491-9357A0F885A6}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TermProject</RootNamespace>
-    <AssemblyName>TermProject</AssemblyName>
+    <RootNamespace>SearchWebService</RootNamespace>
+    <AssemblyName>SearchWebService</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44361</IISExpressSSLPort>
+    <IISExpressSSLPort>44376</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -67,110 +67,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ComicAdmin.aspx" />
-    <Content Include="ComicUserCart.aspx" />
-    <Content Include="ComicUserComics.aspx" />
-    <Content Include="ComicUserHome.aspx" />
-    <Content Include="css\topNavbar.css" />
-    <Content Include="css\stickyFooter.css" />
-    <Content Include="css\myStyle.css" />
-    <Content Include="ForgotInfo.aspx" />
-    <Content Include="js\jquery-3.6.0.min.js" />
-    <Content Include="js\Marvel.js" />
-    <Content Include="Login.aspx" />
-    <Content Include="ComicUserCollection.aspx" />
-    <Content Include="SignUp.aspx" />
-    <Content Include="TwoStep.aspx" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Web References\SearchSVC\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <None Include="Web References\SearchSVC\Search.disco" />
+    <Content Include="Search.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComicAdmin.aspx.cs">
-      <DependentUpon>ComicAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ComicAdmin.aspx.designer.cs">
-      <DependentUpon>ComicAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ComicUserCart.aspx.cs">
-      <DependentUpon>ComicUserCart.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ComicUserCart.aspx.designer.cs">
-      <DependentUpon>ComicUserCart.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ComicUserComics.aspx.cs">
-      <DependentUpon>ComicUserComics.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ComicUserComics.aspx.designer.cs">
-      <DependentUpon>ComicUserComics.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ComicUserHome.aspx.cs">
-      <DependentUpon>ComicUserHome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ComicUserHome.aspx.designer.cs">
-      <DependentUpon>ComicUserHome.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ForgotInfo.aspx.cs">
-      <DependentUpon>ForgotInfo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ForgotInfo.aspx.designer.cs">
-      <DependentUpon>ForgotInfo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ComicUserCollection.aspx.cs">
-      <DependentUpon>ComicUserCollection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ComicUserCollection.aspx.designer.cs">
-      <DependentUpon>ComicUserCollection.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="Comic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="SignUp.aspx.cs">
-      <DependentUpon>SignUp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SignUp.aspx.designer.cs">
-      <DependentUpon>SignUp.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TwoStep.aspx.cs">
-      <DependentUpon>TwoStep.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TwoStep.aspx.designer.cs">
-      <DependentUpon>TwoStep.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\SearchSVC\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
+    <Compile Include="Search.asmx.cs">
+      <DependentUpon>Search.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Web References\SearchSVC\Search.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -183,25 +92,6 @@
       <Project>{ada7d5f5-5dfa-4621-b91a-61c5ba4f5fe4}</Project>
       <Name>ComicLibrary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="https://localhost:44376/Search.asmx%3fop=SearchForComic">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\SearchSVC\</RelPath>
-      <UpdateFromURL>https://localhost:44376/Search.asmx%3fop=SearchForComic</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>TermProject_SearchSVC_Search</CachedSettingsPropName>
-    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -216,9 +106,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50256</DevelopmentServerPort>
+          <DevelopmentServerPort>53323</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44361/</IISUrl>
+          <IISUrl>https://localhost:44376/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
