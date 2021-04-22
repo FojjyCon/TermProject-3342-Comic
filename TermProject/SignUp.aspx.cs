@@ -9,6 +9,9 @@ using Utilities;
 using System.Data;
 using System.Data.SqlClient;
 using ComicLibrary;
+using System.Web.Script.Serialization;
+using System.Net;
+using System.IO;
 
 namespace TermProject
 {
@@ -35,20 +38,77 @@ namespace TermProject
             String password = txtPassword.Text;
             String confirmPassword = txtConfirmPassword.Text;
 
-            String username = txtUsername.Text;
-            String avatar = ddlAvatar.SelectedValue;
-            String email = txtEmail.Text;
-            String securityEmail = txtSecurityEmail.Text;
-            String homeAddress = txtHomeAddress.Text;
-            String billingAddress = txtBillingAddress.Text;
-            String phoneNumber = txtPhoneNumber.Text;
-            String money = txtMoney.Text;
-            String type = rbUserAdmin.SelectedValue.ToString();
+            user.Username = txtUsername.Text;
+            user.Password = txtPassword.Text;
+            user.Avatar = "imgs/" + ddlAvatar.SelectedValue + ".jpg";
+            user.EmailAddress  = txtEmail.Text;
+            user.SecurityEmail = txtSecurityEmail.Text;
+            user.HomeAddress = txtHomeAddress.Text;
+            user.BillingAddress = txtBillingAddress.Text;
+            user.PhoneNumber = txtPhoneNumber.Text;
+            user.Money = txtMoney.Text;
+            user.Type = rbUserAdmin.SelectedValue.ToString();
+            user.Answer1 = txtAnswer1.Text;
+            user.Answer2 = txtAnswer2.Text;
+            user.Answer3 = txtAnswer3.Text;
+            user.BanStatus = "1";
+            user.Verified = "0";
+            
 
-            String answer1 = txtAnswer1.Text;
-            String answer2 = txtAnswer2.Text;
-            String answer3 = txtAnswer3.Text;
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            String jsonUser = js.Serialize(user);
 
+            if (password != confirmPassword)
+            {
+                Response.Write("<script>alert('Password does not match')</script>");
+            }
+            else if (checkEmail(user.EmailAddress) == true)
+            {
+                Response.Write("<script>alert('This email already exists in the system')</script>");
+            }
+            else
+            {
+                try
+                {
+                    // Setup an HTTP POST Web Request and get the HTTP Web Response from the server.
+                    WebRequest request = WebRequest.Create("https://localhost:44371/api/signup/Users");
+                    //WebRequest request = WebRequest.Create("http://cis-iis2.temple.edu/spring2021/CIS3342_tuh16611/TermProject/");
+                    //WebRequest request = WebRequest.Create("http://cis-iis2.temple.edu/Users/tuh16611/CIS3342/CoreWebAPI/api/users/");
+                    request.Method = "POST";
+                    request.ContentLength = jsonUser.Length;
+                    request.ContentType = "application/json";
+
+                    // Write the JSON data to the Web Request
+                    StreamWriter writer = new StreamWriter(request.GetRequestStream());
+                    writer.Write(jsonUser);
+                    writer.Flush();
+                    writer.Close();
+
+                    // Read the data from the Web Response, which requires working with streams.
+                    WebResponse response = request.GetResponse();
+                    Stream theDataStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(theDataStream);
+                    String data = reader.ReadToEnd();
+                    reader.Close();
+                    response.Close();
+
+                    if (data == "true")
+                    {
+                        Response.Write("<scipt>alert('The user was successfully saved to the database.')</script>");
+                    }
+                    else
+                    {
+                        Response.Write("<scipt>alert('The user wasn't saved to the database.')</script>");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    String error = "Error: " + ex.Message;
+                    Response.Write("<scipt>alert('" + error + "')</script>");
+                }
+            }
+            /*
+            // old code before the API REST
             if (password != confirmPassword)
             {
                 Response.Write("<script>alert('Password does not match')</script>");
@@ -109,6 +169,7 @@ namespace TermProject
                     Response.Write("<script>alert('Did not signup. As said already, some required fields are missing.')</script>");
                 }
             }
+            */
         }
 
         public bool checkEmail(String email)
@@ -140,7 +201,7 @@ namespace TermProject
             DataSet getEmail = dbConnect.GetDataSetUsingCmdObj(objCommand);
             return getEmail;
         }
-
+        /*
         public int insertData(String username, String password, String avatar, String emailAddress, String securityEmail, String homeAddress, 
             String billingAddress, String phoneNumber, String money, String type, String answer1, String answer2, String answer3)
         {
@@ -211,7 +272,7 @@ namespace TermProject
             int ret = dbConnect.DoUpdateUsingCmdObj(objCommand);
             return ret;
         }
-
+        */
         public void signupCreateTag(String tagName, int userId)
         {
             objCommand = new SqlCommand();

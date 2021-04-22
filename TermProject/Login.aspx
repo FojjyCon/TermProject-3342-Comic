@@ -21,6 +21,7 @@
         <div>
             <asp:Button ID="btnSignIn" runat="server" Text="SignIn" OnClick="btnSignIn_Click" />
             <asp:Button ID="btnCreateNewUser" runat="server" Text="Create New Account" OnClick="btnCreateNewUser_Click" />
+            <br />
             <asp:Button ID="btnForgot" runat="server" Text="Forgot Username/Password ?" OnClick="btnForgot_Click" />
         </div>
     </form>

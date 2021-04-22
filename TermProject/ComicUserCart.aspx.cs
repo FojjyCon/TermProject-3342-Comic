@@ -21,8 +21,9 @@ namespace TermProject
         {
             if (!IsPostBack)
             {
-                //lblComicUserName.Text = Session["Username"].ToString();
-                //imgUserAvatar.ImageUrl = Session["Avatar"].ToString();
+                lblComicUserName.Text = Session["Username"].ToString();
+                imgUserAvatar.ImageUrl = Session["Avatar"].ToString();
+                lblAccountBalance.Text = Session["Money"].ToString();
 
                 if (Session["UserId"] != null)
                 {

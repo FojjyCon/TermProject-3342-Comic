@@ -1,5 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ComicUserCollection.aspx.cs" Inherits="TermProject.ComicUserCollection" %>
 
+<%@ Register Src="~/ComicAddFunds.ascx" TagPrefix="uc1" TagName="ComicAddFunds" %>
+
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,8 +26,14 @@
                     <asp:Label ID="lblAccountBalance" runat="server" Text="Balance" CssClass="text-light"></asp:Label>
                 </div>
                 <div class="sidebar-heading text-center">
-                    <asp:Button ID="btnAddComic" runat="server" Text="Add+" OnClick="btnAddComic_Click" />
+                    <asp:Button ID="btnAddComic" runat="server" Text="Add Comic" OnClick="btnAddComic_Click" />
+                    <br />
+                    <!--
                     <asp:Button ID="btnAddMoney" runat="server" Text="Add Funds" OnClick="btnAddMoney_Click" />
+                    <br />
+                    <asp:TextBox ID="txtAddMoney" runat="server" class="form-control mr-sm-2"></asp:TextBox>
+                    -->
+                    <uc1:ComicAddFunds runat="server" id="ComicAddFunds" class="form-control mr-sm-2"/>
                 </div>
                 <div class="list-group list-group-flush text-center">
                     <asp:LinkButton ID="lbOwned" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBOwned_Click">Owned Comics</asp:LinkButton>

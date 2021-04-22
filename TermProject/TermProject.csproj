@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ComicAddFunds.ascx" />
     <Content Include="ComicAdmin.aspx" />
     <Content Include="ComicUserCart.aspx" />
     <Content Include="ComicUserComics.aspx" />
@@ -75,6 +76,16 @@
     <Content Include="css\stickyFooter.css" />
     <Content Include="css\myStyle.css" />
     <Content Include="ForgotInfo.aspx" />
+    <Content Include="imgs\blackWidow.jpg" />
+    <Content Include="imgs\captain.jpg" />
+    <Content Include="imgs\hawkeye.jpg" />
+    <Content Include="imgs\hulk.jpg" />
+    <Content Include="imgs\ironMan.jpg" />
+    <Content Include="imgs\panther.jpg" />
+    <Content Include="imgs\strange.jpg" />
+    <Content Include="imgs\thor.jpg" />
+    <Content Include="imgs\vision.jpg" />
+    <Content Include="imgs\witch.jpg" />
     <Content Include="js\jquery-3.6.0.min.js" />
     <Content Include="js\Marvel.js" />
     <Content Include="Login.aspx" />
@@ -93,6 +104,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComicAddFunds.ascx.cs">
+      <DependentUpon>ComicAddFunds.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComicAddFunds.ascx.designer.cs">
+      <DependentUpon>ComicAddFunds.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ComicAdmin.aspx.cs">
       <DependentUpon>ComicAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

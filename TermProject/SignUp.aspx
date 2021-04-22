@@ -15,7 +15,18 @@
             <asp:Label ID="lblUsername" runat="server" Text="Username:"></asp:Label>
             <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
             <asp:Label ID="lblAvatar" runat="server" Text="Avatar:"></asp:Label>
-            <asp:DropDownList ID="ddlAvatar" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddlAvatar" runat="server" AutoPostBack ="true">
+                <asp:ListItem>blackWidow</asp:ListItem>
+                    <asp:ListItem>captain</asp:ListItem>
+                    <asp:ListItem>hawkeye</asp:ListItem>
+                    <asp:ListItem>hulk</asp:ListItem>
+                    <asp:ListItem>ironMan</asp:ListItem>
+                    <asp:ListItem>panther</asp:ListItem>
+                    <asp:ListItem>strange</asp:ListItem>
+                    <asp:ListItem>thor</asp:ListItem>
+                    <asp:ListItem>vision</asp:ListItem>
+                    <asp:ListItem Selected="True">witch</asp:ListItem>
+            </asp:DropDownList>
             <br />
             <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
             <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>

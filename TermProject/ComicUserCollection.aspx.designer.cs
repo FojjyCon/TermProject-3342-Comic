@@ -69,6 +69,24 @@ namespace TermProject
         protected global::System.Web.UI.WebControls.Button btnAddMoney;
 
         /// <summary>
+        /// txtAddMoney control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAddMoney;
+
+        /// <summary>
+        /// ComicAddFunds control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::TermProject.ComicAddFunds ComicAddFunds;
+
+        /// <summary>
         /// lbOwned control.
         /// </summary>
         /// <remarks>

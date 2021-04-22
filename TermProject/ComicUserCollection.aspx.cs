@@ -36,6 +36,7 @@ namespace TermProject
             }
 
             lvMyComics.Visible = false;
+            txtAddMoney.Visible = false;
             addComicToolsShow(false);
         }
 
@@ -128,8 +129,9 @@ namespace TermProject
 
         protected void LBSeller_Click(object sender, EventArgs e)
         {
+            
             addComicToolsShow(false);
-
+            /*
             int userId = Int32.Parse(Session["UserId"].ToString());
 
             // getting all emails
@@ -175,13 +177,13 @@ namespace TermProject
                 lblEmpty.Visible = false;
                 lblEmpty.Text = "";
             }
-
+            */
         }
 
         protected void LBDelete_Click(object sender, EventArgs e)
         {
             addComicToolsShow(false);
-
+            /*
             int userId = Int32.Parse(Session["UserId"].ToString());
 
             // getting all emails
@@ -227,6 +229,7 @@ namespace TermProject
                 lblEmpty.Visible = false;
                 lblEmpty.Text = "";
             }
+            */
         }
 
         protected void btnAddComic_Click(object sender, EventArgs e)
@@ -253,11 +256,11 @@ namespace TermProject
 
             // creating a whole comic
             createComic(coverUrl, title, creators, description, resaleprice, quantity, ownerId);
-
+            /*
             // grabbing comicId based on userId
             DataSet getIt = getEmailId(ownerId);
             int comicId = Int32.Parse(getIt.Tables[0].Rows[0]["ComicId"].ToString());
-
+            
             // grabbing 'owner' tagId for the owner of the comic
             String tagName = "Owned";
             DataSet myData = grabTagId(ownerId, tagName);
@@ -265,7 +268,7 @@ namespace TermProject
 
             // inserting receipt (comic is now owned by this user)
             receiptInsert(ownerId, comicId, tagId);
-
+            */
         }
 
         public void addComicToolsShow(bool tf)
@@ -390,7 +393,7 @@ namespace TermProject
 
             dBConnect.DoUpdateUsingCmdObj(objCommand);
         }
-
+        /*
         public DataSet grabTagId(int userId, String tagName)
         {
             objCommand = new SqlCommand();
@@ -408,7 +411,8 @@ namespace TermProject
             DataSet getTagId = dBConnect.GetDataSetUsingCmdObj(objCommand);
             return getTagId;
         }
-
+        */
+        /*
         public void receiptInsert(int userId, int comicId, int comicTag)
         {
             objCommand = new SqlCommand();
@@ -429,6 +433,7 @@ namespace TermProject
 
             dBConnect.DoUpdateUsingCmdObj(objCommand);
         }
+        */
 
         public DataSet getEmailId(int userId)
         {
@@ -458,6 +463,8 @@ namespace TermProject
 
         protected void btnAddMoney_Click(object sender, EventArgs e)
         {
+            txtAddMoney.Visible = true;
+            String addValue = txtAddMoney.Text;
 
         }
     }
