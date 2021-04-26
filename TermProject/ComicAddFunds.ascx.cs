@@ -54,6 +54,7 @@ namespace TermProject
             txtAddMoney.Visible = false;
             btnSubmit.Visible = false;
             btnCancel.Visible = false;
+            Response.Redirect("ComicUserCollection.aspx");
         }
 
         public void AddFunds(String userId, String balance)

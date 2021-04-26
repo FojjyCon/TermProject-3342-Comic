@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-
+    <link href="css/topNavbar.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -16,6 +16,17 @@
     <form id="form1" runat="server">
         <!-- sidebar -->
         <div class="d-flex" id="wrapper">
+            <!-- sidebar -->
+            <div class="bg-dark border-right" id="sidebar-wrapper">
+                <div class="sidebar-heading text-center">
+                    <asp:Image ID="imgUserAvatar" runat="server" ImageUrl="" Width="85" Height="85" CssClass="rounded" />
+                    <br />
+                    <asp:Label ID="lblComicUserName" runat="server" Text="Username" CssClass="text-light"></asp:Label>
+                    <br />
+                    <asp:Label ID="lblAccountBalance" runat="server" Text="Balance" CssClass="text-light"></asp:Label>
+                </div>
+            </div>
+
             <div id="page-content-wrapper">
                 <%-- Header --%>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-botton">
@@ -61,14 +72,13 @@
                     <div class="dropdown">
                     </div>
                     <%-- Displays comic books --%>
-                    <asp:Label ID="lblEmpty" runat="server" Text="Comic book is missing"></asp:Label>
                     <asp:ListView ID="ListView1" runat="server" DataSourceID="dsPersonalComics"></asp:ListView>
                     <asp:SqlDataSource ID="dsPersonalComics" runat="server"></asp:SqlDataSource>
                 </div>
 
                <%-- displays the comic details --%>
                 <div class="container-fluid">
-                    <h1 class="text-center">What's Hot</h1>
+                    <h1 class="text-center">Whats Hot</h1>
                     <p class="lead text-center" id="message"></p>
                     <div id="marvel-container">
                         <%-- stores our Comics here via ajax in js file --%>

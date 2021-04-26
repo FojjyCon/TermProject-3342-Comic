@@ -24,6 +24,7 @@
         <br />
         <div>
             <asp:Button ID="btnCheckAccountExistence" runat="server" Text="Check Account Existence" OnClick="btnCheckAccountExistence_Click" />
+            <br />
             <asp:Button ID="btnVerify" runat="server" Text="Verify" OnClick="btnVerify_Click" />
         </div>
     </form>

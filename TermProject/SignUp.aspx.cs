@@ -72,8 +72,6 @@ namespace TermProject
                 {
                     // Setup an HTTP POST Web Request and get the HTTP Web Response from the server.
                     WebRequest request = WebRequest.Create("https://localhost:44371/api/signup/Users");
-                    //WebRequest request = WebRequest.Create("http://cis-iis2.temple.edu/spring2021/CIS3342_tuh16611/TermProject/");
-                    //WebRequest request = WebRequest.Create("http://cis-iis2.temple.edu/Users/tuh16611/CIS3342/CoreWebAPI/api/users/");
                     request.Method = "POST";
                     request.ContentLength = jsonUser.Length;
                     request.ContentType = "application/json";
@@ -94,7 +92,21 @@ namespace TermProject
 
                     if (data == "true")
                     {
-                        Response.Write("<scipt>alert('The user was successfully saved to the database.')</script>");
+                        String strTO = txtEmail.Text;
+                        String strFROM = "do_not_reply@comic.com";
+                        String strSubject = "Comic Account Verification";
+                        String strMessage = "Click the link below to verify your account: http://cis-iis2.temple.edu/spring2021/CIS3342_tuh16611/TermProject/TwoStep.aspx";
+
+                        try
+                        {
+                            objEmail.SendMail(strTO, strFROM, strSubject, strMessage);
+                            Response.Write("<script>alert('Account Created! We sent you an email. Check that email and click the link to verify.')</script>");
+                            Response.Redirect("Login.aspx");
+                        }
+                        catch (Exception ex)
+                        {
+                            Response.Write("<script>alert('email wasn't sent because one of the required fields was missing.')</script>");
+                        }
                     }
                     else
                     {
@@ -107,6 +119,27 @@ namespace TermProject
                     Response.Write("<scipt>alert('" + error + "')</script>");
                 }
             }
+
+            // this is code for sending an email for verification 
+            /*
+             *  String strTO = txtEmail.Text;
+                String strFROM = "do_not_reply@comic.com";
+                String strSubject = "Comic Account Verification";
+                String strMessage = "Click the link below to verify your account: http://cis-iis2.temple.edu/spring2021/CIS3342_tuh16611/TermProject/TwoStep.aspx";
+            
+                try
+                {
+                    objEmail.SendMail(strTO, strFROM, strSubject, strMessage);
+                    Response.Write("<script>alert('We sent you an email so you can verify your account. Go do that to be able to login.')</script>");
+                    Response.Redirect("Login.aspx");
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert('The email wasn't sent because one of the required fields was missing.')</script>");
+                }    
+
+             */
+
             /*
             // old code before the API REST
             if (password != confirmPassword)
@@ -201,6 +234,7 @@ namespace TermProject
             DataSet getEmail = dbConnect.GetDataSetUsingCmdObj(objCommand);
             return getEmail;
         }
+
         /*
         public int insertData(String username, String password, String avatar, String emailAddress, String securityEmail, String homeAddress, 
             String billingAddress, String phoneNumber, String money, String type, String answer1, String answer2, String answer3)
@@ -273,6 +307,8 @@ namespace TermProject
             return ret;
         }
         */
+
+        /*
         public void signupCreateTag(String tagName, int userId)
         {
             objCommand = new SqlCommand();
@@ -288,7 +324,8 @@ namespace TermProject
             objCommand.Parameters.Add(inputUserIdInbox);
             dbConnect.DoUpdateUsingCmdObj(objCommand);
         }
-
+        */
+        /*
         public DataSet signupGetUserId(String email)
         {
             objCommand = new SqlCommand();
@@ -302,6 +339,7 @@ namespace TermProject
             DataSet getEmail = dbConnect.GetDataSetUsingCmdObj(objCommand);
             return getEmail;
         }
+        */
     }
 
 }

@@ -5,22 +5,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-
+    <link href="css/topNavbar.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="d-flex" id="wrapper">
+            <!--sidebar-->
             <div class="bg-dark border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
                     <asp:Image ID="imgUserAvatar" runat="server" ImageUrl="" Width="85" Height="85" CssClass="rounded" />
                     <br />
                     <asp:Label ID="lblComicUserName" runat="server" Text="Username" CssClass="text-light"></asp:Label>
-                </div>
-                <div class="list-group list-group-flush text-center">
-                    <asp:LinkButton ID="lbMarvel" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBOwned_Click">Marvel Comics</asp:LinkButton>
-                    <asp:LinkButton ID="lbDC" runat="server" CssClass="list-group-item list-group-item-action bg-dark text-light active" OnClick="LBSeller_Click">DC Comics</asp:LinkButton>
+                    <br />
+                    <asp:Label ID="lblAccountBalance" runat="server" Text="Balance" CssClass="text-light"></asp:Label>
                 </div>
             </div>
 
@@ -69,14 +68,17 @@
                     <%-- Displays comic books --%>
                     <asp:Label ID="lblEmpty" runat="server" Text="Comics"></asp:Label>
                     <br />
-                    <asp:GridView ID="gvComics" runat="server" OnRowCommand="gvComics_RowCommand" OnSelectedIndexChanged="gvComics_SelectedIndexChanged" AutoGenerateColumns="False" GridLines="Horizontal">
+                    <asp:GridView ID="gvComics" runat="server" OnRowCommand="gvComics_RowCommand" OnSelectedIndexChanged="gvComics_SelectedIndexChanged" AutoGenerateColumns="False">
                         <Columns>
                             <asp:ButtonField Text="Add to Cart"/>
                             <asp:BoundField DataField="ComicId" HeaderText="ComicId" />
+                            <asp:ImageField DataImageUrlField="CoverUrl" HeaderText="Cover" ControlStyle-Width="150px" ControlStyle-Height="180px">
+                            <ControlStyle Height="180px" Width="150px"></ControlStyle>
+                            </asp:ImageField>
                             <asp:BoundField DataField="Title" HeaderText="Title" />
                             <asp:BoundField DataField="Creators" HeaderText="Creator(s)" />
                             <asp:BoundField DataField="Description" HeaderText="Description" />
-                            <asp:BoundField DataField="ResalePrice" HeaderText="Resale Price" DataFormatString="{0:C}" />
+                            <asp:BoundField DataField="ResalePrice" HeaderText="Resale Price" DataFormatString="{0:c}" />
                             <asp:BoundField DataField="OwnerId" HeaderText="OwnerId" />
                         </Columns>
                     </asp:GridView>

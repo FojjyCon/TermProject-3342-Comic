@@ -42,67 +42,40 @@ namespace TermProject
         protected global::System.Web.UI.WebControls.TextBox txtEmailInput;
 
         /// <summary>
-        /// lblQ1 control.
+        /// btnCheckEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQ1;
+        protected global::System.Web.UI.WebControls.Button btnCheckEmail;
 
         /// <summary>
-        /// txtQ1 control.
+        /// lblSecurityHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQ1;
+        protected global::System.Web.UI.WebControls.Label lblSecurityHeader;
 
         /// <summary>
-        /// lblQ2 control.
+        /// lblQuestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQ2;
+        protected global::System.Web.UI.WebControls.Label lblQuestion;
 
         /// <summary>
-        /// txtQ2 control.
+        /// txtAnswer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQ2;
-
-        /// <summary>
-        /// lblQ3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQ3;
-
-        /// <summary>
-        /// txtQ3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQ3;
-
-        /// <summary>
-        /// btnBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
+        protected global::System.Web.UI.WebControls.TextBox txtAnswer;
 
         /// <summary>
         /// btnSend control.
@@ -112,5 +85,14 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSend;
+
+        /// <summary>
+        /// btnBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBack;
     }
 }

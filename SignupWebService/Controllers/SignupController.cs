@@ -18,32 +18,30 @@ namespace SignupWebService.Controllers
         DBConnect dBConnect = new DBConnect();
         SqlCommand objCommand = new SqlCommand();
 
-        // GET api/teams/2018
-        [HttpGet("{username}")]
-        [HttpGet("{password}")]
-        public User Get(String username, String password)
+        [HttpGet("{Username}")]
+        public User Get(String username)
         {
             //DBConnect objDB = new DBConnect();
-            DataSet myData = CheckUser(username, password);
+
+            DataSet myData = GetUserData(username);
             DataRow record;
 
             User user = new User();
-
             if (myData.Tables[0].Rows.Count != 0)
             {
                 record = myData.Tables[0].Rows[0];
                 user.Username = record["Username"].ToString();
                 user.Password = record["Password"].ToString();
-            } 
+            }
             return user;
         }
-        
+
         [HttpPost("Users")]
         public Boolean Post([FromBody] User theUser)
         {
             //DBConnect objDB = new DBConnect();
-            int ret = insertData(theUser.Username, theUser.Password, theUser.Avatar, theUser.HomeAddress, 
-                theUser.BillingAddress, theUser.PhoneNumber, theUser.EmailAddress, theUser.SecurityEmail, 
+            int ret = insertData(theUser.Username, theUser.Password, theUser.Avatar, theUser.HomeAddress,
+                theUser.BillingAddress, theUser.PhoneNumber, theUser.EmailAddress, theUser.SecurityEmail,
                 theUser.Money, theUser.Type, theUser.Answer1, theUser.Answer2, theUser.Answer3, theUser.BanStatus, theUser.Verified);
 
             if (ret > 0)
@@ -53,11 +51,27 @@ namespace SignupWebService.Controllers
             return false;
         }
 
-        [HttpPut("Verified")]
-        public void Put(String Verified, [FromBody] User theUser)
+        // this collapsed method is an my attempt to create a PUT rest api method
+        /*
+        [HttpPut("Verify/{username}")]
+        public void Put(String username, [FromBody] User theUser)
         {
+            DataSet myData = GetUserData(username);
+            DataRow record;
 
+            User user = new User();
+            if (myData.Tables[0].Rows.Count != 0)
+            {
+                record = myData.Tables[0].Rows[0];
+                user.Username = record["Username"].ToString();
+                user.Password = record["Password"].ToString();
+                String verified = "1";
+
+                VerifyUser(user.Username, user.Password, verified);
+            }
+            
         }
+        */
 
         public int insertData(String username, String password, String avatar, String emailAddress, String securityEmail, 
             String homeAddress, String billingAddress, String phoneNumber, String money, String type, 
@@ -131,7 +145,9 @@ namespace SignupWebService.Controllers
             return ret;
         }
 
-        public DataSet CheckUser(String username, String password)
+        // this is the verify user method that is to be used with the PUT method
+        /*
+        public DataSet VerifyUser(String username, String password, String verified)
         {
             objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
@@ -145,8 +161,27 @@ namespace SignupWebService.Controllers
             inputPassword.Direction = ParameterDirection.Input;
             objCommand.Parameters.Add(inputPassword);
 
-            DataSet getEmail = dBConnect.GetDataSetUsingCmdObj(objCommand);
-            return getEmail;
+            SqlParameter inputVerified = new SqlParameter("@verified", verified);
+            inputVerified.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputVerified);
+
+            DataSet myData = dBConnect.GetDataSetUsingCmdObj(objCommand);
+            return myData;
+        }
+        */
+
+        public DataSet GetUserData(String username)
+        {
+            objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetAllUserData";
+
+            SqlParameter inputUsername = new SqlParameter("@username", username);
+            inputUsername.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputUsername);
+
+            DataSet myData = dBConnect.GetDataSetUsingCmdObj(objCommand);
+            return myData;
         }
     }
 }

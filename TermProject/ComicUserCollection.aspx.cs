@@ -19,25 +19,60 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 lblComicUserName.Text = Session["Username"].ToString();
                 imgUserAvatar.ImageUrl = Session["Avatar"].ToString();
-                lblAccountBalance.Text = Session["Money"].ToString();
 
+                float grabbedBalance = float.Parse(Session["Money"].ToString());
+                lblAccountBalance.Text = String.Format("{0:C}", grabbedBalance);
 
                 addComicToolsShow(false);
                 if (Session["UserId"] != null)
                 {
-                    lblEmpty.Text = "Welcome to your Comic Book Collection area! This is where you can see all of the comic books you own, " +
-                        "have sold, or have just misplaced/gotten rid of.";
+                    addComicToolsShow(false);
+
+                    int userId = Int32.Parse(Session["UserId"].ToString());
+
+                    // getting all emails
+                    DataSet myData = GrabOwnedComics(userId);
+
+                    ArrayList comicList = new ArrayList();
+                    //var list = new List<Comic>();
+                    int size = myData.Tables[0].Rows.Count;
+                    for (int i = 0; i < size; i++)
+                    {
+                        String comicId = myData.Tables[0].Rows[i]["ComicId"].ToString();
+                        String coverUrl = myData.Tables[0].Rows[i]["CoverUrl"].ToString();
+                        String title = myData.Tables[0].Rows[i]["Title"].ToString();
+                        String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
+                        String description = myData.Tables[0].Rows[i]["Description"].ToString();
+                        String price = myData.Tables[0].Rows[i]["ResalePrice"].ToString();
+
+                        float floatPrice = float.Parse(price);
+                        String resalePrice = String.Format("{0:C}", floatPrice);
+
+                        Comic comic = new Comic();
+                        comic.ComicId = comicId;
+                        comic.CoverUrl = coverUrl;
+                        comic.Title = title;
+                        comic.Creators = creators;
+                        comic.Description = description;
+                        comic.ResalePrice = resalePrice;
+
+                        comicList.Add(comic);
+                    }
+
+                    lvMyComics.DataSource = comicList;
+                    lvMyComics.DataBind();
+                    lvMyComics.Visible = true;
                 }
             }
+        }
 
-            lvMyComics.Visible = false;
-            txtAddMoney.Visible = false;
-            addComicToolsShow(false);
+        protected void btnAddoney_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected void btnCollection_Click(object sender, EventArgs e)
@@ -73,173 +108,32 @@ namespace TermProject
 
         protected void LBOwned_Click(object sender, EventArgs e)
         {
-            /*
-            addComicToolsShow(false);
 
-            int userId = Int32.Parse(Session["UserId"].ToString());
-
-            // getting all emails
-            DataSet myData = GrabOwnedComics(userId);
-
-            //ArrayList comicList = new ArrayList();
-            var list = new List<Comic>();
-            int size = myData.Tables[0].Rows.Count;
-            for (int i = 0; i < size; i++)
-            {
-                String coverUrl = myData.Tables[0].Rows[i]["CoverUrl"].ToString();
-                String title = myData.Tables[0].Rows[i]["Title"].ToString();
-                String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
-                String description = myData.Tables[0].Rows[i]["Description"].ToString();
-                String resalePrice = myData.Tables[0].Rows[i]["ResalePrice"].ToString();
-                String quantity = myData.Tables[0].Rows[i]["Quantity"].ToString();
-                String ownerId = myData.Tables[0].Rows[i]["OwnerId"].ToString();
-
-                Comic comic = new Comic();
-                comic.CoverUrl = coverUrl;
-                comic.Title = title;
-                comic.Creators = creators;
-                comic.Description = description;
-                comic.ResalePrice = resalePrice;
-                comic.Quantity = quantity;
-                comic.OwnerId = ownerId;
-
-                list.Add(comic);
-            }
-            */
-
-            //lvMyComics.DataSource = list;
-            //lvMyComics.DataBind();
-            lvMyComics.Visible = true;
-
-            /*
-            if (size == 0)
-            {
-                lvMyComics.Visible = false;
-                lblEmpty.Visible = true;
-                lblEmpty.Text = "You do not currently own any comics. Add some to your collection by clicking 'Add' in the top left!";
-            }
-            else
-            {
-                lvMyComics.Visible = true;
-                lblEmpty.Visible = false;
-                lblEmpty.Text = "";
-            }
-            */
         }
 
         protected void LBSeller_Click(object sender, EventArgs e)
         {
             
             addComicToolsShow(false);
-            /*
-            int userId = Int32.Parse(Session["UserId"].ToString());
-
-            // getting all emails
-            DataSet myData = GrabOwnedComics(userId);
-
-            //ArrayList comicList = new ArrayList();
-            var list = new List<Comic>();
-            int size = myData.Tables[0].Rows.Count;
-            for (int i = 0; i < size; i++)
-            {
-                String coverUrl = myData.Tables[0].Rows[i]["CoverUrl"].ToString();
-                String title = myData.Tables[0].Rows[i]["Title"].ToString();
-                String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
-                String description = myData.Tables[0].Rows[i]["Description"].ToString();
-                String resalePrice = myData.Tables[0].Rows[i]["ResalePrice"].ToString();
-                String quantity = myData.Tables[0].Rows[i]["Quantity"].ToString();
-                String ownerId = myData.Tables[0].Rows[i]["OwnerId"].ToString();
-
-                Comic comic = new Comic();
-                comic.CoverUrl = coverUrl;
-                comic.Title = title;
-                comic.Creators = creators;
-                comic.Description = description;
-                comic.ResalePrice = resalePrice;
-                comic.Quantity = quantity;
-                comic.OwnerId = ownerId;
-
-                list.Add(comic);
-            }
-
-            lvMyComics.DataSource = list;
-            lvMyComics.DataBind();
-
-            if (size == 0)
-            {
-                lvMyComics.Visible = false;
-                lblEmpty.Visible = true;
-                lblEmpty.Text = "You do not currently own any comics. Add some to your collection by clicking 'Add' in the top left!";
-            }
-            else
-            {
-                lvMyComics.Visible = true;
-                lblEmpty.Visible = false;
-                lblEmpty.Text = "";
-            }
-            */
+            
         }
 
         protected void LBDelete_Click(object sender, EventArgs e)
         {
             addComicToolsShow(false);
-            /*
-            int userId = Int32.Parse(Session["UserId"].ToString());
-
-            // getting all emails
-            DataSet myData = GrabOwnedComics(userId);
-
-            //ArrayList comicList = new ArrayList();
-            var list = new List<Comic>();
-            int size = myData.Tables[0].Rows.Count;
-            for (int i = 0; i < size; i++)
-            {
-                String coverUrl = myData.Tables[0].Rows[i]["CoverUrl"].ToString();
-                String title = myData.Tables[0].Rows[i]["Title"].ToString();
-                String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
-                String description = myData.Tables[0].Rows[i]["Description"].ToString();
-                String resalePrice = myData.Tables[0].Rows[i]["ResalePrice"].ToString();
-                String quantity = myData.Tables[0].Rows[i]["Quantity"].ToString();
-                String ownerId = myData.Tables[0].Rows[i]["OwnerId"].ToString();
-
-                Comic comic = new Comic();
-                comic.CoverUrl = coverUrl;
-                comic.Title = title;
-                comic.Creators = creators;
-                comic.Description = description;
-                comic.ResalePrice = resalePrice;
-                comic.Quantity = quantity;
-                comic.OwnerId = ownerId;
-
-                list.Add(comic);
-            }
-
-            lvMyComics.DataSource = list;
-            lvMyComics.DataBind();
-
-            if (size == 0)
-            {
-                lvMyComics.Visible = false;
-                lblEmpty.Visible = true;
-                lblEmpty.Text = "You do not currently own any comics. Add some to your collection by clicking 'Add' in the top left!";
-            }
-            else
-            {
-                lvMyComics.Visible = true;
-                lblEmpty.Visible = false;
-                lblEmpty.Text = "";
-            }
-            */
+           
         }
 
         protected void btnAddComic_Click(object sender, EventArgs e)
         {
+            lvMyComics.Visible = false;
             addComicToolsShow(true);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
             addComicToolsShow(false);
+            lvMyComics.Visible = true;
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -251,24 +145,11 @@ namespace TermProject
             String creators = txtCreators.Text;
             String description = txtDescription.Text;
             float resaleprice = float.Parse(txtResalePrice.Text);
-            int quantity = Int32.Parse(txtQuantity.Text);
             int ownerId = Int32.Parse(Session["UserId"].ToString());
 
             // creating a whole comic
-            createComic(coverUrl, title, creators, description, resaleprice, quantity, ownerId);
-            /*
-            // grabbing comicId based on userId
-            DataSet getIt = getEmailId(ownerId);
-            int comicId = Int32.Parse(getIt.Tables[0].Rows[0]["ComicId"].ToString());
-            
-            // grabbing 'owner' tagId for the owner of the comic
-            String tagName = "Owned";
-            DataSet myData = grabTagId(ownerId, tagName);
-            int tagId = Int32.Parse(myData.Tables[0].Rows[0]["TagId"].ToString());
-
-            // inserting receipt (comic is now owned by this user)
-            receiptInsert(ownerId, comicId, tagId);
-            */
+            createComic(coverUrl, title, creators, description, resaleprice, ownerId);
+            Response.Redirect("ComicUserCollection.aspx");
         }
 
         public void addComicToolsShow(bool tf)
@@ -292,10 +173,7 @@ namespace TermProject
                 lblResalePrice.Visible = true;
                 txtResalePrice.Visible = true;
 
-                lblQuantity.Visible = true;
-                txtQuantity.Visible = true;
-
-                btnBack.Visible = true;
+                //btnBack.Visible = true;
                 btnCreate.Visible = true;
             } else
             {
@@ -316,13 +194,11 @@ namespace TermProject
                 lblResalePrice.Visible = false;
                 txtResalePrice.Visible = false;
 
-                lblQuantity.Visible = false;
-                txtQuantity.Visible = false;
-
-                btnBack.Visible = false;
+                //btnBack.Visible = false;
                 btnCreate.Visible = false;
             }
         }
+
         public DataSet GrabComicOwnerInfo(int userId, String comicTag)
         {
             objCommand = new SqlCommand();
@@ -355,8 +231,8 @@ namespace TermProject
             return myData;
         }
 
-        public void createComic(String coverUrl, String title, String creators, String description, float resalePrice, 
-            int quantity, int ownerId)
+        public void createComic(String coverUrl, String title, String creators, String description, 
+            float resalePrice, int ownerId)
         {
             objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
@@ -383,57 +259,12 @@ namespace TermProject
             inputResalePrice.Direction = ParameterDirection.Input;
             objCommand.Parameters.Add(inputResalePrice);
 
-            SqlParameter inputQuantity = new SqlParameter("@quantity", quantity);
-            inputQuantity.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputQuantity);
-
             SqlParameter inputOwnerId = new SqlParameter("@ownerId", ownerId);
             inputOwnerId.Direction = ParameterDirection.Input;
             objCommand.Parameters.Add(inputOwnerId);
 
             dBConnect.DoUpdateUsingCmdObj(objCommand);
         }
-        /*
-        public DataSet grabTagId(int userId, String tagName)
-        {
-            objCommand = new SqlCommand();
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_GrabTagId";
-
-            SqlParameter inputUserId = new SqlParameter("@userId", userId);
-            inputUserId.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputUserId);
-
-            SqlParameter inputTagName = new SqlParameter("@tagName", tagName);
-            inputTagName.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputTagName);
-
-            DataSet getTagId = dBConnect.GetDataSetUsingCmdObj(objCommand);
-            return getTagId;
-        }
-        */
-        /*
-        public void receiptInsert(int userId, int comicId, int comicTag)
-        {
-            objCommand = new SqlCommand();
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "ecSentRecipInsert";
-
-            SqlParameter inputUserId = new SqlParameter("@userId", userId);
-            inputUserId.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputUserId);
-
-            SqlParameter inputComicId = new SqlParameter("@inputEmailIdRecip", comicId);
-            inputComicId.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputComicId);
-
-            SqlParameter inputComicTag = new SqlParameter("@comicTag", comicTag);
-            inputComicTag.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(inputComicTag);
-
-            dBConnect.DoUpdateUsingCmdObj(objCommand);
-        }
-        */
 
         public DataSet getEmailId(int userId)
         {
@@ -461,11 +292,12 @@ namespace TermProject
 
         }
 
-        protected void btnAddMoney_Click(object sender, EventArgs e)
+        protected void lvMyComics_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtAddMoney.Visible = true;
-            String addValue = txtAddMoney.Text;
+        }
 
+        protected void lvMyComics_SelectedIndexChanged(object sender, ListViewSelectEventArgs e)
+        {
         }
     }
 }

@@ -42,22 +42,13 @@ namespace TermProject
         protected global::System.Web.UI.WebControls.Label lblComicUserName;
 
         /// <summary>
-        /// lbMarvel control.
+        /// lblAccountBalance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbMarvel;
-
-        /// <summary>
-        /// lbDC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbDC;
+        protected global::System.Web.UI.WebControls.Label lblAccountBalance;
 
         /// <summary>
         /// btnNavHome control.

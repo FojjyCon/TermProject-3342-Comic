@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-
+    <link href="css/topNavbar.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -63,19 +63,22 @@
                     <%-- Displays comic books --%>
                     <asp:Label ID="lblEmpty" runat="server" Text="Comic book is missing"></asp:Label>
                     <br />
-                    <asp:GridView ID="gvComicCart" runat="server" Style="text-align:center" OnRowCommand="gvComicCart_RowCommand" AutoGenerateColumns="False" GridLines="Horizontal" OnSelectedIndexChanged="gvComicCart_SelectedIndexChanged">
+                    <asp:GridView ID="gvComicCart" runat="server" Style="text-align:center" OnRowCommand="gvComicCart_RowCommand" AutoGenerateColumns="False"  OnSelectedIndexChanged="gvComicCart_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField DataField="ComicId" HeaderText="ComicId" />
-                            <asp:BoundField DataField="CoverUrl" HeaderText="Cover Image" />
+                            <asp:ImageField DataImageUrlField="CoverUrl" HeaderText="Cover" ControlStyle-Width="150px" ControlStyle-Height="180px">
+                            <ControlStyle Height="180px" Width="150px"></ControlStyle>
+                            </asp:ImageField>
                             <asp:BoundField DataField="Title" HeaderText="Title" />
                             <asp:BoundField DataField="Creators" HeaderText="Creator(s)" />
-                            <asp:BoundField DataField="ResalePrice" HeaderText="Price" />
+                            <asp:BoundField DataField="ResalePrice" HeaderText="Price" DataFormatString="{0:c}" />
                             <asp:ButtonField Text="Remove" />
                         </Columns>
                     </asp:GridView>
                     <br />
                     <asp:Label ID="lblTotal" runat="server" Text="Total Cost: "></asp:Label>
                     <asp:Label ID="lblTotalText" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lblHiddenTotal" runat="server" Text="" Visible="false"></asp:Label>
                     <asp:Button ID="btnConfirmPurchase" runat="server" Text="Purchase" OnClick="btnConfirmPurchase_Click" />
                 </div>
 

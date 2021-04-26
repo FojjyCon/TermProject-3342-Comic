@@ -18,8 +18,12 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!IsPostBack && Request.Cookies["ComicCookies"] != null)
             {
+                HttpCookie cookies = Request.Cookies["ComicCookies"];
+                txtUsername.Text = cookies.Values["Username"].ToString();
+                txtPassword.Text = cookies.Values["Password"].ToString();
+
                 if (Session["Username"] != null)
                 {
                     txtUsername.Text = Session["Username"].ToString();
@@ -29,6 +33,11 @@ namespace TermProject
 
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
+            HttpCookie cookie = new HttpCookie("ComicCookies");
+            cookie.Values["Username"] = txtUsername.Text;
+            cookie.Values["Password"] = txtPassword.Text;
+            cookie.Expires = DateTime.Now.AddDays(10);
+
             if (txtUsername.Text != null && txtPassword.Text != null)
             {
                 DataSet myData = getLoginData(txtUsername.Text, txtPassword.Text);
@@ -53,6 +62,7 @@ namespace TermProject
                             Session["Avatar"] = dbConnect.GetField("Avatar", 0);
                             Session["Money"] = dbConnect.GetField("Money", 0);
                             Session["PhoneNumber"] = dbConnect.GetField("PhoneNumber", 0);
+                            Response.Cookies.Add(cookie);
                             Response.Redirect("ComicUserHome.aspx");
                         } else
                         {
@@ -63,6 +73,7 @@ namespace TermProject
                             Session["Avatar"] = dbConnect.GetField("Avatar", 0);
                             Session["Money"] = dbConnect.GetField("Money", 0);
                             Session["PhoneNumber"] = dbConnect.GetField("PhoneNumber", 0);
+                            Response.Cookies.Add(cookie);
                             Response.Redirect("ComicAdmin.aspx");
                         }
                     }
@@ -98,6 +109,17 @@ namespace TermProject
 
             DataSet data = dbConnect.GetDataSetUsingCmdObj(objCommand);
             return data;
+        }
+
+        protected void btnClearCookies_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookie = new HttpCookie("ComicCookies");
+            cookie.Values["Username"] = txtUsername.Text;
+            cookie.Values["Password"] = txtPassword.Text;
+            cookie.Expires = DateTime.Now.AddDays(-1d);
+            Response.Cookies.Add(cookie);
+            Response.Write("<script>alert('Cookies has been cleared')</script>");
+
         }
     }
 }

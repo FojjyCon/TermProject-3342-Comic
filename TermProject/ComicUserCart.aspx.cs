@@ -23,7 +23,9 @@ namespace TermProject
             {
                 lblComicUserName.Text = Session["Username"].ToString();
                 imgUserAvatar.ImageUrl = Session["Avatar"].ToString();
-                lblAccountBalance.Text = Session["Money"].ToString();
+
+                float grabbedBalance = float.Parse(Session["Money"].ToString());
+                lblAccountBalance.Text = String.Format("{0:C}", grabbedBalance);
 
                 if (Session["UserId"] != null)
                 {
@@ -85,7 +87,7 @@ namespace TermProject
             String userId = Session["UserId"].ToString();
             //String comicId = "";
             int inCart = 1;
-            int total = 0;
+            float total = 0;
 
             DataSet myData = GetCartItems(inCart.ToString());
 
@@ -98,19 +100,23 @@ namespace TermProject
                 String coverUrl = myData.Tables[0].Rows[i]["CoverUrl"].ToString();
                 String title = myData.Tables[0].Rows[i]["Title"].ToString();
                 String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
-                String resalePrice = myData.Tables[0].Rows[i]["ResalePrice"].ToString();
+                float resalePrice = float.Parse(myData.Tables[0].Rows[i]["ResalePrice"].ToString());
+
+                String priceFormatted = String.Format("{0:C}", resalePrice);
 
                 Comic comic = new Comic();
                 comic.ComicId = comicId;
                 comic.CoverUrl = coverUrl;
                 comic.Title = title;
                 comic.Creators = creators;
-                comic.ResalePrice = resalePrice;
+                comic.ResalePrice = priceFormatted;
 
-                total += Int32.Parse(resalePrice);
+                total += resalePrice;
 
                 comicArrayList.Add(comic);
             }
+            lblHiddenTotal.Text = total.ToString();
+            String totalFormatted = String.Format("{0:C}", total);
 
             gvComicCart.DataSource = comicArrayList;
             gvComicCart.DataBind();
@@ -134,7 +140,7 @@ namespace TermProject
                 gvComicCart.Visible = true;
                 lblEmpty.Visible = false;
                 lblEmpty.Text = "";
-                lblTotalText.Text = total.ToString();
+                lblTotalText.Text = totalFormatted;
             }
 
 
@@ -193,7 +199,8 @@ namespace TermProject
             DataSet myData = GetCurrentOwnerMoney(inCart.ToString());
 
             String userId = Session["UserId"].ToString();
-            float totalCost = float.Parse(lblTotalText.Text);
+            //float totalCost = float.Parse(lblTotalText.Text);
+            float totalCost = float.Parse(lblHiddenTotal.Text);
 
             // grabs the buyers account info
             DataSet newOwnerMoney = GetUserMoney(userId);

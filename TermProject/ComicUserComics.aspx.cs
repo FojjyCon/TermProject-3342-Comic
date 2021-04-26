@@ -30,10 +30,13 @@ namespace TermProject
                 lblComicUserName.Text = Session["Username"].ToString();
                 imgUserAvatar.ImageUrl = Session["Avatar"].ToString();
 
+                float grabbedBalance = float.Parse(Session["Money"].ToString());
+                lblAccountBalance.Text = String.Format("{0:C}", grabbedBalance);
+
                 if (Session["UserId"] != null)
                 {
-                    lblEmpty.Text = "Check out the comics below. You can also add any of them to your cart.";
-
+                    lblEmpty.Text = "COMICS";
+                    //gvComics.Visible = true;
                     displayComics();
                 }
             }
@@ -119,7 +122,9 @@ namespace TermProject
 
         public void displayComics()
         {
-            DataSet myData = GetAllComics();
+            String userId = Session["UserId"].ToString();
+
+            DataSet myData = GetNotOwnedComics(userId);
 
             ArrayList comicArrayList = new ArrayList();
 
@@ -127,19 +132,26 @@ namespace TermProject
             for (int i = 0; i < size; i++)
             {
                 String comicId = myData.Tables[0].Rows[i]["ComicId"].ToString();
+                String coverUrl = myData.Tables[0].Rows[i]["CoverUrl"].ToString();
                 String title = myData.Tables[0].Rows[i]["Title"].ToString();
                 String creators = myData.Tables[0].Rows[i]["Creators"].ToString();
                 String description = myData.Tables[0].Rows[i]["Description"].ToString();
-                String resalePrice = myData.Tables[0].Rows[i]["ResalePrice"].ToString();
+                float resalePrice = float.Parse(myData.Tables[0].Rows[i]["ResalePrice"].ToString());
                 String ownerId = myData.Tables[0].Rows[i]["OwnerId"].ToString();
+
+                DataSet myData2 = GetUsername(ownerId);
+                String username = myData2.Tables[0].Rows[0]["Username"].ToString();
+                String priceFormatted = String.Format("{0:C}", resalePrice);
+
 
                 Comic comic = new Comic();
                 comic.ComicId = comicId;
+                comic.CoverUrl = coverUrl;
                 comic.Title = title;
                 comic.Creators = creators;
                 comic.Description = description;
-                comic.ResalePrice = resalePrice;
-                comic.OwnerId = ownerId;
+                comic.ResalePrice = priceFormatted;
+                comic.OwnerId = username;
 
                 comicArrayList.Add(comic);
             }
@@ -161,11 +173,42 @@ namespace TermProject
             }
         }
 
+        // getAllComics() original but changed to below method
+        /*
         public DataSet GetAllComics()
         {
             objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.CommandText = "TP_GetAllComics";
+
+            DataSet getGridView = dBConnect.GetDataSetUsingCmdObj(objCommand);
+            return getGridView;
+        }
+        */
+
+        public DataSet GetUsername(String userId)
+        {
+            objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetUsername";
+
+            SqlParameter inputUserId = new SqlParameter("@userId", userId);
+            inputUserId.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputUserId);
+
+            DataSet getGridView = dBConnect.GetDataSetUsingCmdObj(objCommand);
+            return getGridView;
+        }
+
+        public DataSet GetNotOwnedComics(String userId)
+        {
+            objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetNotOwnedComics";
+
+            SqlParameter inputUserId = new SqlParameter("@userId", userId);
+            inputUserId.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(inputUserId);
 
             DataSet getGridView = dBConnect.GetDataSetUsingCmdObj(objCommand);
             return getGridView;

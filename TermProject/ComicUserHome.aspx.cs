@@ -11,7 +11,15 @@ namespace TermProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                lblComicUserName.Text = Session["Username"].ToString();
+                imgUserAvatar.ImageUrl = Session["Avatar"].ToString();
 
+                float grabbedBalance = float.Parse(Session["Money"].ToString());
+                lblAccountBalance.Text = String.Format("{0:C}", grabbedBalance);
+
+            }
         }
 
         protected void btnNavHome_Click(object sender, EventArgs e)

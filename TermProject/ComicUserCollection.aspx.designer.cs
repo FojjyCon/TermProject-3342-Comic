@@ -51,67 +51,22 @@ namespace TermProject
         protected global::System.Web.UI.WebControls.Label lblAccountBalance;
 
         /// <summary>
-        /// btnAddComic control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddComic;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// btnAddMoney control.
+        /// ComicAddFunds1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddMoney;
-
-        /// <summary>
-        /// txtAddMoney control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddMoney;
-
-        /// <summary>
-        /// ComicAddFunds control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TermProject.ComicAddFunds ComicAddFunds;
-
-        /// <summary>
-        /// lbOwned control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbOwned;
-
-        /// <summary>
-        /// lbSold control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbSold;
-
-        /// <summary>
-        /// lbDelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbDelete;
+        protected global::TermProject.ComicAddFunds ComicAddFunds1;
 
         /// <summary>
         /// btnNavHome control.
@@ -150,24 +105,6 @@ namespace TermProject
         protected global::System.Web.UI.WebControls.Button btnShoppingCart;
 
         /// <summary>
-        /// txtSearchComic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchComic;
-
-        /// <summary>
-        /// btnSearchComic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchComic;
-
-        /// <summary>
         /// btnLogout control.
         /// </summary>
         /// <remarks>
@@ -177,15 +114,6 @@ namespace TermProject
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// lblEmpty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmpty;
-
-        /// <summary>
         /// lvMyComics control.
         /// </summary>
         /// <remarks>
@@ -193,15 +121,6 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvMyComics;
-
-        /// <summary>
-        /// dsPersonalComics control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsPersonalComics;
 
         /// <summary>
         /// lblAddTitle control.
@@ -301,33 +220,6 @@ namespace TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtResalePrice;
-
-        /// <summary>
-        /// lblQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQuantity;
-
-        /// <summary>
-        /// txtQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQuantity;
-
-        /// <summary>
-        /// btnBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
 
         /// <summary>
         /// btnCreate control.
