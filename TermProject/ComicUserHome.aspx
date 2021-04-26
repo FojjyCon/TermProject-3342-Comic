@@ -53,12 +53,7 @@
                                     <asp:Button ID="btnShoppingCart" runat="server" Text="Shopping Cart" class="form-control mr-sm-2" OnClick="btnShoppingCart_Click" />
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <div class="form-inline">
-                                    <asp:TextBox ID="txtSearchComic" runat="server" class="form-control mr-sm-2" placeholder="Search Comic" aria-label="Search Comic"></asp:TextBox>
-                                    <asp:Button ID="btnSearchComic" runat="server" Text="Search" class="btn btn-outline-light my-2 my-sm-0" OnClick="btnSearchComic_Click" />
-                                </div>
-                            </li>
+
                         </ul>
                         <div class="form-inline mt-2 mt-md-0">
                             &nbsp
